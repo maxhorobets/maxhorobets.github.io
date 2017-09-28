@@ -129,6 +129,11 @@ body{
   
 }
 
+.card__people__list__peoples:hover{
+  background: rgba(118,117,128,0.1);
+  color: #ec5a62;
+}
+
 
 .card__link:hover{
   color: #ec5a62;
