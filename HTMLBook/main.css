@@ -44,7 +44,12 @@ header{
 .header__list__link{
     font-size: 16px;
     list-style-type: none;
+    text-decoration: none;
     margin: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 container{
@@ -80,8 +85,12 @@ main{
 footer{
     font-size: 16px;
     box-shadow: 0 5px 8px rgba(.8, .8, .8, .8);
+    position: fixed; /* Фиксированное положение */
+    bottom: 0;
+    width: 100%;
+    
 }
 
-.footer__list{
+/*.footer__list{
     text-align: left;
-}
+}*/
