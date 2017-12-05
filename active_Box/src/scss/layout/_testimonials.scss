@@ -1,0 +1,29 @@
+.testimonials{
+    display: flex;    
+    background: $testimonial-bg;
+}
+
+    .testimonials__desc{          
+        padding-left: 85px;
+        color: #fff;            
+    }
+
+        .testimonials__desc--quote{
+            @include cardoItalic;
+            margin: 110px 0 0 0;
+            width: 510px;
+        }
+
+        .testimonials__desc--quoter{
+            font-weight: 700;
+            font-size: 0.8125rem;
+            line-height: 1.3125rem;
+            margin: 25px 0 180px 0;
+        }
+
+        
+
+    .photo{ 
+        width: 50%;       
+        background: url('../img/quote-bg-1.jpg') top right no-repeat;
+    }

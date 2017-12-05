@@ -1,0 +1,38 @@
+
+@mixin container{
+    width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+
+    @media screen and (max-width:1210px){
+        width: 970px;
+
+    }
+
+    @media screen and (max-width:992px){
+        width: 750px;
+    }
+
+    @media screen and (max-width:768px){
+        width: auto;
+    }
+}
+
+@mixin size ($font){
+    font-size: $font;
+    line-height: $font + 2px;
+}
+
+@mixin flexCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin cardoItalic{
+    @import url('https://fonts.googleapis.com/css?family=Cardo:400i');
+    font-family: 'Cardo', serif;
+    font-size: 2.25rem;
+    font-weight: 2.625rem;
+}
+

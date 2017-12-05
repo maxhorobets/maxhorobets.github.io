@@ -1,0 +1,50 @@
+.features{
+    background: $features-bg;
+}
+
+    .features-container{
+        @include container;
+    }
+
+        .company-features__list{
+            list-style: none;
+            display: grid;
+            grid-template-columns: 370px 370px 370px;
+            padding: 0;
+            margin-top: 120px;
+            grid-column-gap: 30px;
+            grid-row-gap: 70px;
+        }
+
+            .company-features__item{
+            }
+
+                .company-features__link{
+                    text-decoration: none; 
+                    display: block;                   
+                    // width: 370px;                    
+                }
+
+                    .company-features__imeg{
+                        display: block;
+                        margin: 0 auto;
+                    }
+
+                    .company-features__title{
+                        text-align: center;
+                        text-transform: uppercase;
+                        color: #2d3033;
+                        font-size: 0.875rem;
+                        font-weight: 700;
+                        margin: 30px 0 0 0;                        
+                    }
+
+                    .company-features__desc{
+                        text-align: center;
+                        width: 300px;
+                        margin: 25px auto 0 auto;
+                        color: #80858b;
+                        font-size: 0.875rem;
+                        font-weight: 400;
+                        line-height: 1.3125rem;
+                    }
