@@ -39,6 +39,8 @@ body{
 
 5. BUDGET-SECTION
 
+6. FLIGHT_CAB_HOTEL
+
 X. ADDITIONAL COMPONENTS
 
     X.1 MODAL-WINDOW
@@ -690,14 +692,12 @@ X. ADDITIONAL COMPONENTS
         position: relative;
         z-index: 2;
     }
-    .budget__title {
-        
+    .budget__title {        
         @include sectionsTitle;
         margin: 90px 0 0 0;
         text-align: center;
     }
-    .budget__title--small {
-        
+    .budget__title--small {        
         @include sectionsTitleSmall;
         margin: 10px 0 60px 0;
         text-align: center;
@@ -812,6 +812,7 @@ X. ADDITIONAL COMPONENTS
     .flight-cab-hotel__conteiner{
         display: flex;
         justify-content: space-between;
+        align-items: center;
     }
 
         .flight-cab-hotel__img{
@@ -822,18 +823,24 @@ X. ADDITIONAL COMPONENTS
 
             .flight-cab-hotel__content{
                 width: 740px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-end;
             }
 
                 .flight-cab-hotel__title{
-
+                    @include sectionsTitle;
+                    margin: 0;                    
                 }
 
                 .flight-cab-hotel__title--small{
-
+                    @include sectionsTitleSmall;
+                    margin: 15px 0 0 0;
                 }
 
                 .tabs__block{
-
+                    margin: 50px 0 0 0;
                 }
 
                     .tabs__list{
@@ -841,27 +848,199 @@ X. ADDITIONAL COMPONENTS
                         padding: 0;
                         margin: 0;
                         display: flex;
+                        justify-content: space-between;
+                        border: 2px solid #00a4ff;
+                        width: 689px; 
+                        background: #fff;
                     }
 
                         .tabs__item{
-
-                        }
+                            display: flex;
+                        }                       
 
                             .tabs__link{
                                 text-decoration: none;
                                 color: #000;
                                 display: flex;
-                                align-items: center;
+                                align-items: center;  
+                                background: #fff;
+                            }
+
+                            .active__tab {
+                                background: #00a4ff;
+                                color: #fff;                                
+                            }
+
+                            .next-sibling__tab{
+                                background: #e4e4e4;
                             }
 
                                 .tabs-icon__text{
                                     padding: 0;
-                                    margin: 0;
+                                    margin: 0 70px 0 0;
+                                    text-transform: capitalize;
+                                    @include montserrat;
+                                    font-size: 1.375rem;
+                                    font-weight: 500;
                                 }
+
+                                .tabs__list .fa{
+                                    font-size: 2.78125rem;
+                                    margin: 25px 20px;
+                                }
+
+                                .triangle__next-sibling{
+                                    background: #fff;
+                                    width: 0;
+                                    height: 0;
+                                    border-top: 47px solid transparent;
+                                    border-left: 24px solid #e4e4e4;
+                                    border-bottom: 47px solid transparent;
+                                }
+
+                                .triangle__active{   
+                                    background: #e4e4e4;                                 
+                                    width: 0;
+                                    height: 0;
+                                    border-top: 47px solid transparent;
+                                    border-left: 24px solid #00a4ff;
+                                    border-bottom: 47px solid transparent;
+                                }
+
+                    .tabs-1, .tabs-2, .tabs-3{
+                        margin: 50px 0 0 0;
+                        @include lato;
+                        font-size: 1.125rem;
+                        font-weight: 500;
+                        letter-spacing: 0.025rem;
+                        line-height: 1.6875rem;
+                        width: 630px;
+                        display: none;
+                    }
+
+                    .tabs-active{
+                        display: block;
+                    }
+                                
 
 /* 
 *
 * ./FLIGHT_CAB_HOTEL
+*
+*/
+
+
+/* 
+*
+* 7. TOURS
+*
+*/
+
+
+.tours {
+background: url('../img/tours_bg.png') top center no-repeat #00a4ff;
+width: 100%;
+position: relative;
+padding: 80px 0 45px 0;
+
+    &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 684px;
+    background: #fff;
+    opacity: .55;
+    z-index: 1;
+    }
+
+}
+
+    .tours-conteiner{
+        position: relative;
+        z-index: 2;
+    }
+
+        .tours__title {
+            @include sectionsTitle;
+            margin: 0;
+            text-align: center;
+        }
+
+        .tours__title--small {
+            @include sectionsTitleSmall;
+            margin: 15px 0 0 0;
+            text-align: center;
+            backdrop-filter: blur(1px);
+        }
+
+        .tours__list{
+            list-style: none;
+            padding: 0;
+            margin: 80px 0 0 0;
+            display: flex;
+            justify-content: center;
+        }
+
+            .tours__item{
+                width: 380px;
+                border-radius: 13px;
+                background: #fff;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .tours__item--active{
+                transform: scale(1.1);
+            }
+
+                .tours__item--img{
+                    border-top-left-radius: 13px;
+                    border-top-right-radius: 13px;
+                    
+                }
+                
+                .tours__item--terms{
+                    @include montserrat;
+                    font-size: 1.25rem;
+                    font-weight: 400;
+                    margin: 15px 0 0 0;
+                }
+                
+                .tours__item--place{
+                    @include montserrat;
+                    font-size: 1.75rem;
+                    font-weight: 900;
+                    margin: 10px 0 0 0;
+                }
+                
+                .tours__item--descr{
+                    @include lato;
+                    font-size: 1.0625rem;
+                    letter-spacing: 0.025rem;
+                    line-height: 1.6875rem;
+                    text-align: center;
+                    margin: 10px 0 0 0;
+                }
+                
+                .tours__item--price{
+                    @include montserrat;
+                    font-size: 1.875rem;
+                    font-weight: 900;
+                    margin: 10px 0 0 0;
+                }
+                
+                .tours__item--button{
+                    margin: 15px 0 23px 0;
+                    padding: 10px 40px 10px 40px;
+                }
+
+/* 
+*
+*  ./TOURS
 *
 */
 
