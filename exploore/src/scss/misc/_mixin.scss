@@ -1,0 +1,76 @@
+
+@mixin container{
+    width: 1245px;
+    margin: 0 auto;
+    padding: 0;
+
+    // @media screen and (max-width:1210px){
+    //     width: 970px;
+
+    // }
+
+    // @media screen and (max-width:992px){
+    //     width: 750px;
+    // }
+
+    // @media screen and (max-width:768px){
+    //     width: auto;
+    // }
+}
+
+@mixin size ($font){
+    font-size: $font;
+    line-height: $font + 2px;
+}
+
+@mixin flexCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin montserrat{
+    font-family: 'Montserrat', sans-serif;
+}
+
+@mixin lato{
+    font-family: 'Lato', sans-serif;
+}
+
+@mixin preHeaderText{
+    @include montserrat;
+    font-weight: 400;
+    font-size: 0.875rem;    
+}
+
+@mixin distinationInputsStyle{
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    @include montserrat;
+    font-size: 1.0625rem;
+    font-weight: 500;
+    color: #7e7e7e;
+    margin-top: 15px;
+}
+
+@mixin sectionsTitle{
+    padding: 0;
+    @include montserrat;
+    font-size: 2.3125rem;
+    font-weight: 900;
+}
+
+@mixin sectionsTitleSmall {
+    padding: 0;
+    @include montserrat;
+    font-size: 2.3125rem;
+    font-weight: 400;
+}
+
+@mixin placeholderStyle{
+    @include montserrat;
+    font-size: 1.0625rem;
+    font-weight: 500;
+    color: #7e7e7e;
+}

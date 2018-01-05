@@ -1,0 +1,908 @@
+*{
+    box-sizing: border-box;
+}
+
+html, body{
+    width: 100%;
+    min-height: 100vh;
+
+
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+.maincontent{
+    flex-grow: 1;
+}
+
+
+/* - - - - = = = = SECTIONS OF THE SITE = = = = - - - - */
+
+/* 
+
+1. TOP-SECTION 
+
+    1.1 PRE-HEADER
+    
+    1.2 HEADER 
+
+    1.3 TOP-SECTION DESCRIPTION
+
+2. DESTINATION-SECTION
+
+3. ABOUT-SECTION
+
+4. SERVICES-SECTION 
+
+5. BUDGET-SECTION
+
+X. ADDITIONAL COMPONENTS
+
+    X.1 MODAL-WINDOW
+    
+*/
+
+
+/* 
+*
+* 1. TOP-SECTION 
+*
+*/
+
+
+.top-section{
+    width: 100%;
+    height: 100vh;
+    background: url('../img/top-section-bg.png') center bottom no-repeat;
+    background-size: cover;
+  
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        opacity: .56;
+        background: #000;
+        z-index: 1;
+    }
+
+}
+
+    .all-header{
+        position: relative;    
+
+        &:after{
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            opacity: .39;
+        }
+    }
+
+    .conteiner{
+        @include container;
+    }
+
+
+        /* 
+        *
+        * 1.1 PRE-HEADER
+        *
+        */
+
+
+        .pre-header{
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            z-index: 3;
+            border-bottom: 3px solid #9c9c9c;
+            padding: 25px 0 20px 0;
+        }
+
+            .tel{
+                position: relative;
+                z-index: 2;
+                color: #fff;
+                text-decoration: none;
+                @include preHeaderText;
+                
+            }
+
+            .email{
+                position: relative;
+                z-index: 2;
+                color: #fff;
+                text-decoration: none;
+                @include preHeaderText;
+            }
+
+            .social__list{
+                position: relative;
+                z-index: 2;
+                list-style: none;
+                display: flex;
+                padding: 0;
+                margin: 0;
+            }
+
+                .social__item{
+                    margin-left: 20px;
+
+                    &:first-child{
+                        margin-left: 0px;
+                    }
+                }
+
+                    .social__link{
+                        color: #fff;
+                        text-decoration: none;
+                        @include preHeaderText;
+                    }
+        
+                .pre-header .fa{                
+                    color: #ffdd00;
+                    font-size: 1.1rem;
+                }
+
+            .log-and-sign{
+
+            }
+                .login{
+                    position: relative;
+                    z-index: 2;
+                    color: #fff;
+                    text-decoration: none;
+                    @include preHeaderText;
+                }
+
+                .sign-up{
+                    position: relative;
+                    z-index: 2;
+                    color: #fff;
+                    text-decoration: none;               
+                    @include preHeaderText;
+                    margin-left: 30px;
+                    margin-right: 35px;
+                }
+
+        /* 
+        *
+        * ./PRE-HEADER
+        *
+        */
+
+
+        /* 
+        *
+        * 1.2 HEADER
+        *
+        */
+
+        .header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;         
+        }
+
+            .logo{
+                text-decoration: none;
+                color: #fff;                    
+                @include montserrat;
+                font-weight: 500;
+                font-size: 2.23rem;
+                display: flex;
+                flex-direction: column;  
+            }
+
+                .logo__main{
+                    display: flex;
+                }
+
+                    .logo__letters{
+                        padding: 0;
+                        margin: 0;
+                        letter-spacing: -2px;
+                    }
+
+                    .logo__concatenated-letters--first{
+                        letter-spacing: -9px;
+                        color: #ffdd00;
+                    }
+
+                    .logo__concatenated-letters--second {
+                        padding: 0;
+                        margin: 0;
+                        color: #ffdd00;
+                        letter-spacing: -2px;
+                    }
+
+                .logo__under{
+                    padding: 0;
+                    margin: 0;
+                    text-align: center;
+                    @include montserrat;
+                    font-weight: 700;
+                    font-size: 0.5625rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05rem;
+                }
+
+            .nav{
+
+            }
+
+                .nav__list{
+                    display: flex;                                           
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                }
+
+                    .nav__item{
+                        margin-right: 50px;                        
+                        position: relative;
+                    }
+
+                        .nav__link{
+                            display: block;
+                            text-decoration: none;
+                            color: #fff;
+                            text-transform: uppercase;                                
+                            @include montserrat;
+                            font-size: 1rem;
+                            font-weight: 400;
+                            letter-spacing: 0.01rem;
+                            padding: 35px 0 25px 0;
+
+                            &:before {
+                                content: '';
+                                position: absolute;
+                                left: 0;
+                                bottom: 0;
+                                width: 100%;
+                                height: 5px;
+                                background: #ffdd00;
+                                opacity: 0;
+                                transition: opacity .3s ease-in-out;                                
+                            }
+
+                            &:hover:before{
+                                opacity: 1;
+                            }
+
+                        }
+
+        /* 
+        *
+        * ./HEADER
+        *
+        */
+
+        /* 
+        *
+        * 1.3 TOP-SECTION DESCRIPTION
+        *
+        */
+
+        .top-section__descr{
+            position: relative;
+            z-index: 2;
+            // left: 50%;
+            // top: 50%;
+            // transform: translate(-50%, -50%);            
+            color: #fff;
+            width: 800px;
+            margin: 100px auto 0 auto;
+            text-align: center;
+        }
+
+            .top-section__title{
+                margin: 0;                
+                @include montserrat;
+                font-size: 4.6875rem;
+                font-weight: 900;
+                letter-spacing: 0.05rem;
+                line-height: 0.8;
+            }
+
+            .top-section__title--under{
+                margin: 30px 0 0 0;
+                @include montserrat;
+                font-size: 2.5rem;
+                font-weight: 900;
+                letter-spacing: 0.700rem;
+                text-transform: uppercase;
+            }
+
+            .top-section__title--definition{
+                @include lato;
+                font-size: 1.125rem;
+                font-weight: 500;
+                letter-spacing: 0.025rem;
+                line-height: 1.6875rem;
+                width: 750px;
+                margin: 36px auto 0 auto;
+            }
+
+            .button{
+                padding: 20px 60px;
+                margin-top: 50px;
+                background: #ffdd00;
+                border: none;
+                border-radius: 6px;
+                @include montserrat;
+                font-size: 1rem;
+                font-weight: 500;
+                letter-spacing: 0.001rem;
+                text-transform: uppercase;
+                outline: none;
+                cursor: pointer; 
+                transition: all .3s ease-in-out;                   
+
+                
+                &:hover{
+                    background: #00a4ff;
+                    color: #fff;
+                }
+            }
+
+        /* 
+        *
+        * ./TOP-SECTION DESCRIPTION
+        *
+        */
+
+
+/* 
+*
+* ./TOP-SECTION 
+*
+*/
+
+/* 
+*
+* 2.DESTINATION-SECTION 
+*
+*/
+
+.destination{
+    background: 
+    repeating-linear-gradient( 135deg, rgba($color: #000000, $alpha: .08), rgba($color: #000000, $alpha: .08),
+    transparent 1px, transparent 9px);
+    background-color: #ffdd00;     
+    text-align: center;
+}
+
+    .destination__title{
+        @include montserrat;
+        font-size: 2.3125rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        margin: 70px 0 0 0;
+    }
+
+    .destination__form{
+        margin: 60px 0 80px 0;
+        display: flex;
+        align-items: flex-end;
+    }
+
+        .location,
+        .check-in,
+        .check-out,
+        .adult,
+        .child{
+            display: flex;
+            flex-direction: column;
+            margin-left: 15px;            
+        }
+
+            .form__texts{
+                display: inline-flex;
+                @include montserrat;
+                font-size: 1.25rem;
+                font-weight: 500;
+                color: #000;
+                text-transform: capitalize;
+                margin: 0;
+            }
+
+            .location__input{
+                width: 240px;
+                padding: 10px 0 10px 20px;
+                @include distinationInputsStyle;
+            }
+
+            .date-check-in{
+                width: 210px;
+                padding: 7px 0 7px 20px;           
+                text-transform: uppercase;
+                @include distinationInputsStyle;
+            }
+
+            .date-check-out {
+                width: 210px;
+                padding: 7px 0 7px 20px;           
+                text-transform: uppercase;
+                @include distinationInputsStyle;           
+            }
+
+            .adult__input{
+                width: 130px;
+                padding: 10px 0 10px 20px;
+                @include distinationInputsStyle;
+            }
+
+            .child__input{
+                width: 130px;
+                padding: 10px 0 10px 20px;
+                @include distinationInputsStyle;
+            }
+
+            ::-webkit-input-placeholder {
+                @include placeholderStyle;                
+            }
+
+            ::-moz-placeholder {
+                @include placeholderStyle;
+            }
+            /* Firefox 19+ */
+
+            :-moz-placeholder {
+                @include placeholderStyle;
+            }
+            /* Firefox 18- */
+
+            :-ms-input-placeholder {
+                @include placeholderStyle;
+            }
+
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {       
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+        .distination__button {
+            padding: 12px 45px 10px 45px;
+            margin: 0 0 0 38px;
+            background: #4c4c4c; 
+            color: #fff;          
+        }
+
+/* 
+*
+* ./DESTINATION-SECTION 
+*
+*/
+
+
+/* 
+*
+* 3. ABOUT-SECTION
+*
+*/
+
+.about{
+    background: url('../img/about__background.png') right center no-repeat;        
+    width: 100%;
+    display: flex;   
+       
+}
+
+    .column__left{
+        background: url('../img/about_img.png') top center no-repeat;
+        background-size: cover;
+        width: 50%;
+    }
+
+    .column__right{
+        width: 50%;
+    }
+
+        .about__content{
+            padding-left: 70px;
+            width: 554px;
+        }
+
+            .about__title{
+                margin: 80px 0 0 0;
+                @include sectionsTitle;
+            }
+
+            .about__title--small{
+                margin: 5px 0 0 0;
+                @include sectionsTitleSmall;
+            }
+
+            .about__descr{
+                margin: 30px 0 0 0;
+                padding: 0;
+                @include lato;
+                font-size: 1.125rem;
+                font-weight: 500;                
+                width: 540px;
+                line-height: 1.6875rem;
+            }
+
+            .about__list{
+                margin: 40px 0 82px 0;
+                padding: 0;
+                list-style: none;
+            }
+
+                .about__item{
+                    display: flex;
+                    align-items: center;
+                    margin: 36px 0 0 0;
+
+                    &:first-child{
+                        margin: 0;
+                    }
+                }
+
+                    .about__item .fa-check-circle {
+                        color: #00a4ff;
+                        font-size: 1.875rem;
+                    }
+
+                    .about__item--text{
+                        margin: 0 0 0 20px;
+                        padding: 0;
+                        width: 400px;
+                        @include lato;
+                        font-size: 1.125rem;
+                        font-weight: 500;
+                        letter-spacing: 0.025;
+                    }
+
+/* 
+*
+* ./ABOUT-SECTION
+*
+*/
+
+/* 
+*
+* 4. SERVICES-SECTION
+*
+*/
+
+.services__title{
+    @include sectionsTitle;
+    margin: 70px 0 0 0;
+    text-align: center;
+}
+
+.services__title--small {
+    @include sectionsTitleSmall;
+    margin: 10px 0 80px 0;
+    text-align: center;
+}
+
+.services__list{
+    list-style: none;
+    padding: 0;
+    margin: 0 0 95px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+    .services__item{
+        width: 510px;
+        margin: 50px 0 0 0;
+        display: flex;
+        justify-content: space-between; 
+        
+        &:first-child, &:nth-child(2){
+            margin: 0;
+        }
+    }
+
+        .services__item--text-area{
+            width: 370px;
+        }
+
+            .services__item--title{
+                margin: 0;
+                padding: 0;
+                @include montserrat;
+                font-size: 1.375rem;
+                font-weight: 500;
+            }
+
+            .services__item--descr{
+                margin: 0;
+                padding: 0;
+                @include lato;
+                font-size: 1.125rem;
+                font-weight: 500;
+                line-height: 1.6875rem;
+            }
+
+        .services__item--icon{     
+            display: flex;
+            justify-content: center;
+        }
+
+            .services__item .fa{
+                color: #00a4ff;
+                
+            }
+
+                .services__item--icon .fa-plane,
+                .services__item--icon .fa-cutlery,
+                .services__item--icon .fa-university {
+                    font-size: 3.479375rem;
+                }
+
+                .services__item--icon .fa-train,
+                .services__item--icon .fa-bicycle,
+                .services__item--icon .fa-eye{
+                    font-size: 3.4375rem;            
+                }
+
+/* 
+*
+* ./SERVICES-SECTION
+*
+*/
+
+
+
+/* 
+*
+* 5. BUDGET-SECTION
+*
+*/
+
+.budget {
+    background: url('../img/budjet_bg.png') top center no-repeat #00a4ff;
+    width: 100%;
+    position: relative;
+
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 508px;
+        background: #fff;
+        opacity: .24;
+        z-index: 1;
+    }
+
+    .budget-container{
+        position: relative;
+        z-index: 2;
+    }
+    .budget__title {
+        
+        @include sectionsTitle;
+        margin: 90px 0 0 0;
+        text-align: center;
+    }
+    .budget__title--small {
+        
+        @include sectionsTitleSmall;
+        margin: 10px 0 60px 0;
+        text-align: center;
+    }
+
+    .budget__list{
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        padding: 0;
+        margin: 0 0 100px 0;
+    }
+
+        .budget__item{
+            position: relative;
+            width: 400px;
+            display: flex;
+            justify-content: center;
+        }
+
+            .budget__item--content{
+                position: relative;
+                width: 384px;
+                background: #fff;  
+                border-radius: 13px;
+            }
+
+                .budget__item--title{
+                    text-align: center;
+                    @include montserrat;
+                    font-size: 1.5625rem;
+                    font-weight: 800;
+                    margin: 20px 0 0 0;
+                }
+
+                .budget__item .fa-car,
+                .budget__item .fa-train,
+                .budget__item .fa-plane {
+                    display: block;
+                    text-align: center;                    
+                    font-size: 4.1875rem;
+                    margin-top: 35px;                    
+                    color: #373737;
+                }               
+
+
+                .price-block{
+                    margin: 0 auto;
+                    background: #f0d839;                     
+                    position: absolute;
+                    width: 400px;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);                     
+                }
+
+                    .price{
+                        text-align: center;
+                        @include montserrat;
+                        font-size: 1.875rem;
+                        font-weight: 500;
+                        margin: 15px 0;
+                    }
+
+                .budget__list--inner{
+                    list-style: none;                    
+                    margin: 110px 0 35px 0;                    
+                    padding: 0;
+                    display: flex;                    
+                    flex-direction: column;                    
+                    align-items: center;
+                }
+
+                    .budget__item--inner{
+                        display: flex;
+                        align-items: center;
+                        width: 185px;
+                        margin: 10px 0 0 0;
+                    }
+
+                        .budget__item--inner .fa-check-circle {
+                            color: #00a4ff;
+                            font-size: 1.0625rem;
+                            margin-right: 20px;
+                        }
+
+                        .budget__item--inner-text{
+                            margin: 0;
+                            @include lato;
+                            font-size: 1.0625rem;
+                            font-weight: 500;
+                        }
+}
+
+/* 
+*
+* ./BUDGET-SECTION
+*
+*/
+
+
+/* 
+*
+* 6. FLIGHT_CAB_HOTEL
+*
+*/
+
+.flight-cab-hotel{
+    margin: 90px 0 100px 0;   
+}
+
+    .flight-cab-hotel__conteiner{
+        display: flex;
+        justify-content: space-between;
+    }
+
+        .flight-cab-hotel__img{
+            width: 415px;
+            height: 545px;
+            border-radius: 13px;
+        }
+
+            .flight-cab-hotel__content{
+                width: 740px;
+            }
+
+                .flight-cab-hotel__title{
+
+                }
+
+                .flight-cab-hotel__title--small{
+
+                }
+
+                .tabs__block{
+
+                }
+
+                    .tabs__list{
+                        list-style: none;
+                        padding: 0;
+                        margin: 0;
+                        display: flex;
+                    }
+
+                        .tabs__item{
+
+                        }
+
+                            .tabs__link{
+                                text-decoration: none;
+                                color: #000;
+                                display: flex;
+                                align-items: center;
+                            }
+
+                                .tabs-icon__text{
+                                    padding: 0;
+                                    margin: 0;
+                                }
+
+/* 
+*
+* ./FLIGHT_CAB_HOTEL
+*
+*/
+
+
+
+
+/* 
+*
+* X.1 MODAL-WINDOW
+*
+*/
+
+.modal{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    width: 500px;
+    height: 300px;
+    background: #fff;
+    display: none;
+}
+
+
+
+.overlay{
+    position: absolute;
+    z-index: 4;
+    width: 100%;
+    height: 100vh;
+    background: rgba($color: #000000, $alpha: .5);
+    display: none;
+}
+
+.modal-show, .overlay-show{
+    display: block;    
+}
+
+/* 
+*
+* ./MODAL-WINDOW 
+*
+*/
