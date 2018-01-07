@@ -12,10 +12,16 @@ html, body{
 body{
     display: flex;
     flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .maincontent{
     flex-grow: 1;
+}
+
+.sections__conteiner{
+    @include sectionsContent;
 }
 
 
@@ -687,11 +693,8 @@ X. ADDITIONAL COMPONENTS
         opacity: .24;
         z-index: 1;
     }
+}
 
-    .budget-container{
-        position: relative;
-        z-index: 2;
-    }
     .budget__title {        
         @include sectionsTitle;
         margin: 90px 0 0 0;
@@ -790,7 +793,7 @@ X. ADDITIONAL COMPONENTS
                             font-size: 1.0625rem;
                             font-weight: 500;
                         }
-}
+
 
 /* 
 *
@@ -941,7 +944,7 @@ X. ADDITIONAL COMPONENTS
 background: url('../img/tours_bg.png') top center no-repeat #00a4ff;
 width: 100%;
 position: relative;
-padding: 80px 0 45px 0;
+padding: 80px 0 160px 0;
 
     &:before {
     content: '';
@@ -957,86 +960,82 @@ padding: 80px 0 45px 0;
 
 }
 
-    .tours-conteiner{
-        position: relative;
-        z-index: 2;
+    .tours__title {
+        @include sectionsTitle;
+        margin: 0;
+        text-align: center;
     }
 
-        .tours__title {
-            @include sectionsTitle;
-            margin: 0;
-            text-align: center;
-        }
+    .tours__title--small {
+        @include sectionsTitleSmall;
+        margin: 15px 0 0 0;
+        text-align: center;
+        backdrop-filter: blur(1px);
+    }
 
-        .tours__title--small {
-            @include sectionsTitleSmall;
-            margin: 15px 0 0 0;
-            text-align: center;
-            backdrop-filter: blur(1px);
-        }
+    .tours__list{
+        list-style: none;
+        padding: 0;
+        margin: 80px 0 0 0;
+        display: flex;
+        justify-content: center;
+    }
 
-        .tours__list{
-            list-style: none;
-            padding: 0;
-            margin: 80px 0 0 0;
+        .tours__item{
+            width: 380px;
+            border-radius: 13px;
+            background: #fff;
             display: flex;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
         }
 
-            .tours__item{
-                width: 380px;
-                border-radius: 13px;
-                background: #fff;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }
+        .tours__item--active{
+            transform: scale(1.1);
+        }
 
-            .tours__item--active{
-                transform: scale(1.1);
+            .tours__item--img{
+                border-top-left-radius: 13px;
+                border-top-right-radius: 13px;
+                
             }
-
-                .tours__item--img{
-                    border-top-left-radius: 13px;
-                    border-top-right-radius: 13px;
-                    
-                }
-                
-                .tours__item--terms{
-                    @include montserrat;
-                    font-size: 1.25rem;
-                    font-weight: 400;
-                    margin: 15px 0 0 0;
-                }
-                
-                .tours__item--place{
-                    @include montserrat;
-                    font-size: 1.75rem;
-                    font-weight: 900;
-                    margin: 10px 0 0 0;
-                }
-                
-                .tours__item--descr{
-                    @include lato;
-                    font-size: 1.0625rem;
-                    letter-spacing: 0.025rem;
-                    line-height: 1.6875rem;
-                    text-align: center;
-                    margin: 10px 0 0 0;
-                }
-                
-                .tours__item--price{
-                    @include montserrat;
-                    font-size: 1.875rem;
-                    font-weight: 900;
-                    margin: 10px 0 0 0;
-                }
-                
-                .tours__item--button{
-                    margin: 15px 0 23px 0;
-                    padding: 10px 40px 10px 40px;
-                }
+            
+            .tours__item--terms{
+                @include montserrat;
+                font-size: 1.25rem;
+                font-weight: 400;
+                margin: 15px 0 0 0;
+            }
+            
+            .tours__item--place{
+                @include montserrat;
+                font-size: 1.75rem;
+                font-weight: 900;
+                margin: 10px 0 0 0;
+            }
+            
+            .tours__item--descr{
+                @include lato;
+                font-size: 1.0625rem;
+                letter-spacing: 0.025rem;
+                line-height: 1.6875rem;
+                text-align: center;
+                margin: 10px 0 0 0;
+            }
+            
+            .tours__item--price{
+                @include montserrat;
+                font-size: 1.875rem;
+                font-weight: 900;
+                margin: 10px 0 0 0;
+            }
+            
+            .tours__item--button{
+                margin: 15px 0 23px 0;
+                padding: 10px 40px 10px 40px;
+            }
+        
 
 /* 
 *
@@ -1045,7 +1044,387 @@ padding: 80px 0 45px 0;
 */
 
 
+/* 
+*
+* 8. GO-EXPLOORE
+*
+*/
 
+.go-exploore{
+    background: url('../img/go-exploore_bg.png') bottom center no-repeat;
+    position: relative;
+    padding: 100px 0 80px 0;
+    
+    
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        opacity: .60;
+        z-index: 1;
+    }
+}
+
+    .go-exploore__title {
+        @include sectionsTitle;
+        margin: 0;
+        text-align: center;
+    }
+
+    .go-exploore__title--small {
+        @include sectionsTitleSmall;
+        margin: 15px 0 0 0;
+        text-align: center;
+        text-transform: uppercase;        
+    }
+
+    .slider__list{
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        padding: 0;
+        margin: 55px 0 0 0;            
+    }
+
+        .slider__item{
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 385px;
+            background: #fff;
+            border-radius: 13px;
+            margin: 0 15px 0 15px;
+        }
+
+            .slider__item--img{
+                width: 385px;
+                border-top-left-radius: 13px;
+                border-top-right-radius: 13px;
+            }
+
+            .slider__item--title{
+                margin: 60px 0 0 0;
+                @include montserrat;
+                font-size: 1.5625rem;
+                font-weight: 900;                    
+            }
+
+            .slider__item--descr{
+                @include lato;
+                font-size: 1.0625rem;
+                letter-spacing: 0.025rem;
+                line-height: 1.6875rem;
+                text-align: center;
+                width: 295px;
+                margin: 15px 0 40px 0;
+            }
+
+            .slider__item--button{
+                padding: 12px 40px 12px 40px;
+                margin: 0;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+/* 
+*
+* ./GO-EXPLOORE
+*
+*/
+
+/* 
+*
+* 9. REVIEWS
+*
+*/
+
+.reviews{
+    background: url('../img/customers_bg.png') center center no-repeat;    
+    padding: 100px 0 80px 0;
+    position: relative;     
+
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        opacity: .90;
+        z-index: 1;
+    }
+}
+
+    .reviews .sections__conteiner {
+        position: relative;
+        z-index: 2;
+        color: #fff;
+    }
+
+        .reviews__title {
+            @include sectionsTitle;
+            margin: 0;
+            text-align: center;            
+        }
+
+        .reviews__title--small {
+            @include sectionsTitleSmall;
+            margin: 15px 0 0 0;
+            text-align: center;            
+        }
+
+        .customer__review{
+            margin: 0 auto;
+            width: 980px;
+        }
+
+            .customer__review--text{
+                text-align: center;
+                @include lato;
+                font-size: 1.0625rem;
+                letter-spacing: 0.065rem;
+                line-height: 1.6875rem;
+                font-weight: 500;
+                font-style : italic;
+                margin: 60px 0 0 0;
+                padding: 0;
+            }
+
+            .customer__review--assessment{
+                text-align: center;   
+                margin: 25px 0 0 0;
+                padding: 0;
+            }
+
+                .customer__review--assessment .fa{
+                    color: #ffdd00;
+                    font-size: 1.375rem;
+                    margin-left: 15px;
+
+
+                    &:first-child{
+                        margin-left: 0;
+                    }
+                }
+
+            .customer__review--reviewer-information{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 50px 0 0 0;
+            }
+
+                .reviewer__photo{
+                    border-radius: 50%;
+                }
+
+                .reviewer__name--wrap{
+                    margin: 0 0 0 18px;
+                }
+
+                    .reviewer__name{
+                        @include montserrat;
+                        font-size: 1.5625rem;
+                        font-weight: 900;
+                        margin: 0;
+                    }
+
+                    .reviewer__travel-place{
+                        @include montserrat;
+                        font-size: 1rem;
+                        font-weight: 400;
+                        margin: 5px 0 0 0;
+                    }
+
+
+
+/* 
+*
+* ./REVIEWS
+*
+*/
+
+/* 
+*
+* 10. CONTACT
+*
+*/
+
+.contact{
+    background: url('../img/contact_bg.png') top center no-repeat;        
+    padding: 140px 0 80px 0;
+    position: relative;
+    // width: 150%;   как сделать скруглённый background?
+    // border-radius: 0 0 50% 50%;
+
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 512px;
+        background: #000;
+        opacity: .30;
+        z-index: 1;
+    }
+}
+
+    .contact .fa-map-marker{
+        color: #f0d839;
+        font-size: 12.875rem;
+        position: absolute;
+        left: 50%;
+        top: 45%;
+        transform: translate(-50%, -45%);
+    }
+
+    .contact__title{
+        @include sectionsTitle;
+        margin: 0;
+        text-align: center; 
+        color: #fff;
+    }
+
+    .contact__title--small{
+        @include sectionsTitleSmall;
+        margin: 15px 0 0 0;
+        text-align: center;
+        color: #fff;
+    }
+
+    .contact__list{
+        list-style: none;
+        padding: 0;
+        margin: 320px 0 0 0;
+        display: flex;
+        justify-content: center;
+    }
+
+        .contact__item{
+            display: flex;
+            align-items: flex-start;
+            margin-left: 150px;
+
+            &:first-child{
+                margin-left: 0;
+            }
+        }
+
+            .contact__item .fa-envelope-o{
+                color: #262626;
+                font-size: 3rem;
+            }
+
+            .contact__item .fa-mobile{
+                color: #262626;
+                font-size: 4rem;
+            }
+
+            .contact__item .fa-map-o{
+                color: #262626;
+                font-size: 3rem;
+            }
+
+            .contact__information{
+                margin-left: 28px;
+                color: #262626;
+            }
+
+                .contact__information--title{
+                    @include lato;
+                    font-size: 1.0625rem;
+                    letter-spacing: 0.025rem;
+                    line-height: 1.2rem;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    margin: 0;
+                }
+
+                .contact__information--mail{
+                    text-decoration: none;
+                    display: block;
+                    color: #262626;
+                    @include lato;
+                    font-size: 1rem;
+                    letter-spacing: 0.025rem;
+                    line-height: 1.6875rem;
+                    font-weight: 500;
+                    margin: 0px 0 0 0;
+                }
+
+    .social__list--footer{
+        display: flex;
+        justify-content: center;   
+        list-style: none;
+        margin: 110px 0 0 0;
+        padding: 0;     
+    }
+
+        .social__item--footer{
+            margin-left: 35px;
+
+            &:first-child{
+                margin-left: 0;
+            }
+        }
+
+            .social__link--footer{
+                text-decoration: none;
+                width: 60px;
+                height: 60px;
+                background: #fff;
+                border: 3px solid #ffdd00;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: background .2s ease-in-out;
+
+                &:hover {
+                    background: #f0d839;
+                }
+            }
+
+                .social__link--footer .fa{
+                    color: #262626;
+                    font-size: 1.875rem;
+                }
+
+/* 
+*
+* ./CONTACT
+*
+*/
+
+
+.footer{
+    background: #f0d839;
+    text-align: center;
+    @include lato;
+    font-size: 1.0625rem;
+    letter-spacing: 0.025rem;
+    line-height: 1.2rem;
+    padding: 60px 0 60px 0;
+}
+
+    .footer__text{
+        margin: 15px 0 0 0;
+
+        &:first-child{
+            margin: 0;
+        }
+    }
 
 /* 
 *

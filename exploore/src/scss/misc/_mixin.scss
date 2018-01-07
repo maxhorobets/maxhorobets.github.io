@@ -74,3 +74,8 @@
     font-weight: 500;
     color: #7e7e7e;
 }
+
+@mixin sectionsContent{
+    position: relative;
+    z-index: 2;
+}
