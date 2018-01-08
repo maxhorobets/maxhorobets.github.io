@@ -17,6 +17,12 @@
     
     <link rel="stylesheet" href="css/main.min.css">
 
+    <link rel="stylesheet" href="css/jquery-ui.css">
+
+    <link rel="stylesheet" href="css/jquery-ui.structure.css">
+
+    <link rel="stylesheet" href="css/jquery-ui.theme.css">
+
     <title>Exploore</title>
     
 </head>
@@ -300,7 +306,7 @@
 
                     <p class="check-in__text form__texts">check in</p>
 
-                    <input type="date" name="calendar" class="date-check-in">
+                    <input type="text" class="date-check-in" placeholder="DD-MM-YYYY">
 
                 </div>
 
@@ -308,7 +314,7 @@
 
                     <p class="check-out__text form__texts">check out</p>
 
-                    <input type="date" name="calendar" class="date-check-out">
+                    <input type="text" class="date-check-out" placeholder="DD-MM-YYYY">
 
                 </div>
                
@@ -1161,8 +1167,10 @@
                 go exploore
             
             </h4>
-
+            
             <ul class="slider__list">
+
+                <i class="fa fa-arrow-left slide-left" aria-hidden="true"></i>
                 
                 <li class="slider__item">
 
@@ -1191,7 +1199,7 @@
 
                 </li>                
             
-                <li class="slider__item">
+                <li class="slider__item slider__item--active">
 
                     <img class="slider__item--img" src="img/go-exploore2.png" alt="">
 
@@ -1243,11 +1251,11 @@
 
                     </button>
 
-                </li>                
-            
+                </li>                   
+                
                 <li class="slider__item">
 
-                    <img class="slider__item--img" src="img/go-exploore1.png" alt="">
+                    <img class="slider__item--img" src="img/go-exploore4.png" alt="">
 
                     <h4 class="slider__item--title">
 
@@ -1274,7 +1282,7 @@
             
                 <li class="slider__item">
 
-                    <img class="slider__item--img" src="img/go-exploore2.png" alt="">
+                    <img class="slider__item--img" src="img/go-exploore5.png" alt="">
 
                     <h4 class="slider__item--title">
 
@@ -1301,7 +1309,7 @@
             
                 <li class="slider__item">
 
-                    <img class="slider__item--img" src="img/go-exploore3.png" alt="">
+                    <img class="slider__item--img" src="img/go-exploore6.png" alt="">
 
                     <h4 class="slider__item--title">
 
@@ -1326,6 +1334,9 @@
 
                 </li>                
             
+
+                <i class="fa fa-arrow-right slide-right" aria-hidden="true"></i>
+
             </ul>
 
         </div>
@@ -1352,50 +1363,153 @@
             
             </h4>
 
-            <div class="customer__review">
+            <div class="reviews__slide">
 
-                <p class="customer__review--text">
+                <div class="customer__review">
 
-                    ”Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-                    laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse 
-                    cillum dolore eu fugiat nulla pariatur.”
+                    <p class="customer__review--text">
 
-                </p>
+                        ”Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                        laboris nisi ut aliquip ex ea commodo consequat. 
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse 
+                        cillum dolore eu fugiat nulla pariatur.”
 
-                <div class="customer__review--assessment">
+                    </p>
 
-                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <div class="customer__review--assessment">
 
-                    <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
 
-                    <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
 
-                    <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
 
-                    <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+
+                        <i class="fa fa-star" aria-hidden="true"></i>
+
+                    </div>
+
+                    <div class="customer__review--reviewer-information">
+
+                        <img class="reviewer__photo" src="img/reviewer_photo.png" alt="">
+
+                        <div class="reviewer__name--wrap">
+
+                            <p class="reviewer__name">
+
+                                John Smith
+
+                            </p>
+
+                            <p class="reviewer__travel-place">
+
+                                Solo Traveller
+
+                            </p>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
-                <div class="customer__review--reviewer-information">
+                <div class="customer__review showing">
 
-                    <img class="reviewer__photo" src="img/reviewer_photo.png" alt="">
+                    <p class="customer__review--text">
 
-                    <div class="reviewer__name--wrap">
+                        ”Идейные соображения высшего порядка, а также постоянный количественный 
+                        рост и сфера нашей активности играет важную роль в формировании модели развития. Не следует, однако забывать, что укрепление и развитие структуры требуют определения и уточнения
+                        систем массового участия.”
 
-                        <p class="reviewer__name">
+                    </p>
 
-                            John Smith
+                    <div class="customer__review--assessment">
 
-                        </p>
+                        <i class="fa fa-star" aria-hidden="true"></i>
 
-                        <p class="reviewer__travel-place">
+                        <i class="fa fa-star" aria-hidden="true"></i>
 
-                            Solo Traveller
+                        <i class="fa fa-star" aria-hidden="true"></i>
 
-                        </p>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+
+                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
+
+                    </div>
+
+                    <div class="customer__review--reviewer-information">
+
+                        <img class="reviewer__photo" src="img/reviewer_photo1.png" alt="">
+
+                        <div class="reviewer__name--wrap">
+
+                            <p class="reviewer__name">
+
+                                Adam Smith
+
+                            </p>
+
+                            <p class="reviewer__travel-place">
+
+                                Solo Traveller
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="customer__review">
+
+                    <p class="customer__review--text">
+
+                        ”Decore delenit conceptam sit ad, labitur philosophia cum te. 
+                        Per semper urbanitas adipiscing ea, ea mea quot verterem.
+                        Vim ad eros assum falli, pri ex alterum adversarium. 
+                        No qualisque instructior mea, sea natum intellegat et, 
+                        reque choro pericula
+                        has ne. Ex facilis electram vis, eam ex ferri vitae ceteros.”
+
+                    </p>
+
+                    <div class="customer__review--assessment">
+
+                        <i class="fa fa-star" aria-hidden="true"></i>
+
+                        <i class="fa fa-star" aria-hidden="true"></i>
+
+                        <i class="fa fa-star" aria-hidden="true"></i>
+
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+
+                    </div>
+
+                    <div class="customer__review--reviewer-information">
+
+                        <img class="reviewer__photo" src="img/reviewer_photo2.png" alt="">
+
+                        <div class="reviewer__name--wrap">
+
+                            <p class="reviewer__name">
+
+                                Ann Li
+
+                            </p>
+
+                            <p class="reviewer__travel-place">
+
+                                Solo Traveller
+
+                            </p>
+
+                        </div>
 
                     </div>
 
@@ -1628,10 +1742,89 @@
 
     <!-- - - - - ./FOOTER - - - - -->
 
-
     <div class="modal__login">
 
+        <form class="modal__login--form" action="">
 
+            <p class="modal__login--form-text">
+
+                Your email:
+
+            </p>
+
+            <input class="modal__login--form-email" name="email" placeholder="myemail@gmail.com" type="email">
+
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+
+            <p class="modal__login--form-text">
+
+                Your password:
+
+            </p>
+
+            <input class="modal__login--form-password" name="password" placeholder="*******" type="password">
+
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+
+            <input class="modal__login--form-submit" value="Log in" type="submit">
+
+        </form>
+
+        <i class="fa fa-times close-modal" aria-hidden="true"></i>
+
+    </div>
+
+    <div class="overlay"></div>
+
+    <div class="modal__sign-up">
+
+        <form class="modal__sign-up--form" action="">
+
+            <p class="modal__sign-up--form-text">
+
+                Name:
+
+            </p>
+
+            <input class="modal__sign-up--form-name" name="name" type="text">
+
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+
+            <p class="modal__sign-up--form-text">
+
+                Surname:
+
+            </p>
+
+            <input class="modal__sign-up--form-surname" name="surname" type="text">
+
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+
+            <p class="modal__sign-up--form-text">
+
+                Email address:
+
+            </p>
+
+            <input class="modal__sign-up--form-mail" name="email" type="email">
+
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+           
+            <p class="modal__sign-up--form-text">
+
+                Create your password:
+
+            </p>
+
+            <input class="modal__sign-up--form-password" name="password" type="password">
+
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+
+            <input class="modal__login--form-submit" value="Sign up" type="submit">
+
+        </form>
+
+        <i class="fa fa-times close-modal close-modal-sign" aria-hidden="true"></i>
 
     </div>
 
@@ -1641,13 +1834,24 @@
 
     </div>
 
-    <div class="overlay">
 
+    <script src="js/jquery-3.2.1.min.js"></script>
 
-    </div>
-
+    <script src="js/jquery-ui.js"></script>
 
     <script src="js/main.js"></script>
+
+    <script>
+        $(function () {
+            $(".date-check-in, .date-check-out").datepicker({
+                // numberOfMonths: 1,
+                // showButtonPanel: true,
+                // showOn: "button",                
+                // buttonImageOnly: true
+                dateFormat: "dd-mm-yy"
+            });
+        });
+    </script>
     
 </body>
 </html>

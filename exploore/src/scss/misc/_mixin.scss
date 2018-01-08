@@ -45,7 +45,7 @@
 
 @mixin distinationInputsStyle{
     outline: none;
-    border: none;
+    border: 0px;
     border-radius: 5px;
     @include montserrat;
     font-size: 1.0625rem;

@@ -22,6 +22,7 @@ body{
 
 .sections__conteiner{
     @include sectionsContent;
+    @include container;
 }
 
 
@@ -433,19 +434,12 @@ X. ADDITIONAL COMPONENTS
                 @include distinationInputsStyle;
             }
 
-            .date-check-in{
+            .date-check-in, .date-check-out{
                 width: 210px;
-                padding: 7px 0 7px 20px;           
+                padding: 10px 0 10px 20px;           
                 text-transform: uppercase;
                 @include distinationInputsStyle;
-            }
-
-            .date-check-out {
-                width: 210px;
-                padding: 7px 0 7px 20px;           
-                text-transform: uppercase;
-                @include distinationInputsStyle;           
-            }
+            }           
 
             .adult__input{
                 width: 130px;
@@ -1085,14 +1079,20 @@ padding: 80px 0 160px 0;
     .slider__list{
         list-style: none;
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
+        align-items: center;
         overflow: hidden;
         padding: 0;
         margin: 55px 0 0 0;            
     }
 
+        .slide-left, .slide-right{
+            font-size: 3rem;
+            cursor: pointer;            
+        }
+
         .slider__item{
-            display: flex;
+            display: none;
             position: relative;
             flex-direction: column;
             justify-content: center;
@@ -1102,6 +1102,12 @@ padding: 80px 0 160px 0;
             border-radius: 13px;
             margin: 0 15px 0 15px;
         }
+
+        .slider__item--active{
+            display: flex;
+        }
+
+
 
             .slider__item--img{
                 width: 385px;
@@ -1168,7 +1174,7 @@ padding: 80px 0 160px 0;
     .reviews .sections__conteiner {
         position: relative;
         z-index: 2;
-        color: #fff;
+        color: #fff;        
     }
 
         .reviews__title {
@@ -1184,8 +1190,7 @@ padding: 80px 0 160px 0;
         }
 
         .customer__review{
-            margin: 0 auto;
-            width: 980px;
+            margin: 0 auto;            
         }
 
             .customer__review--text{
@@ -1432,35 +1437,209 @@ padding: 80px 0 160px 0;
 *
 */
 
-.modal{
-    position: absolute;
+.modal__login{
+    width: 500px;    
+    position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    z-index: 5;
-    width: 500px;
-    height: 300px;
-    background: #fff;
+    background: #fff;  
     display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    @include montserrat;
 }
 
-
+.modal-active{
+    display: flex;
+}
 
 .overlay{
-    position: absolute;
-    z-index: 4;
     width: 100%;
-    height: 100vh;
-    background: rgba($color: #000000, $alpha: .5);
-    display: none;
+    height: 0;
+    background: #000;
+    opacity: 0;
+    position: fixed;
+    z-index: 4;
+      
 }
 
-.modal-show, .overlay-show{
-    display: block;    
+.overlay-active{
+    height: 100vh;
+    opacity: .6;
 }
+
+    .close-modal{
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 10px;
+        cursor: pointer;
+      }
+
+    .modal__login--form-text{
+        text-align: center;
+        margin: 25px 0 10px 0;
+      }
+
+    .modal__login--form-email, .modal__login--form-password {
+        margin-bottom: 20px;
+        width: 300px;
+        outline: #000;
+        border: 1px solid #000;
+        height: 35px;
+    }
+
+    .modal__login input[placeholder] {
+        text-overflow: ellipsis;
+        color: #000;
+        padding-left: 10px;
+        font-size: 1rem;
+        @include lato;
+    }
+
+    .modal__login--form-submit{
+        display: flex;
+        margin: 0 auto 25px auto;        
+        padding: 10px 40px;
+        background: #ffdd00;
+        border: none;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-weight: 500;
+        letter-spacing: 0.001rem;        
+        outline: none;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: all .3s ease-in-out;
+
+        &:hover {
+            background: #00a4ff;
+            color: #fff;
+        }
+    }
+
 
 /* 
 *
 * ./MODAL-WINDOW 
 *
 */
+
+
+.modal__sign-up {
+    width: 500px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    @include montserrat;
+}
+
+.modal-active {
+    display: flex;
+}
+
+.overlay {
+    width: 100%;
+    height: 0;
+    background: #000;
+    opacity: 0;
+    position: fixed;
+    z-index: 4;
+}
+
+.overlay-active {
+    height: 100vh;
+    opacity: .6;
+}
+
+.close-modal {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.modal__sign-up--form-text {
+    text-align: center;
+    margin: 25px 0 10px 0;
+}
+
+.modal__sign-up--form-mail,
+.modal__sign-up--form-password,
+.modal__sign-up--form-name,
+.modal__sign-up--form-surname {
+    margin-bottom: 20px;
+    width: 300px;
+    outline: #000;
+    border: 1px solid #000;
+    height: 30px;
+    padding-left: 10px;
+}
+
+
+.modal__sign-up .fa-exclamation-circle{
+    font-size: 1.2rem;    
+    display: none;
+    color: red;
+    margin-left: 10px;
+}
+
+
+
+.datepicker{
+
+}
+
+
+
+
+
+
+
+/* 
+*
+* X.2 REVIEW-SLIDE
+*
+*/
+
+.reviews__slide{
+    position: relative;
+    width: 980px;
+    height: 370px;
+    margin: 0 auto;
+}
+
+.customer__review {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 980px;
+    height: 100%;
+    opacity: 0;
+    z-index: 1;
+    -webkit-transition: opacity .5s;
+    -moz-transition: opacity .5s;
+    -o-transition: opacity .5s;
+    transition: opacity .5s;
+}
+
+.showing {
+    opacity: 1;
+    z-index: 2;
+}
+
+/* 
+*
+* ./REVIEW-SLIDE
+*
+*/
+
