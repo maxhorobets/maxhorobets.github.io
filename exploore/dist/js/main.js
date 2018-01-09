@@ -8,14 +8,28 @@ function init () {
 
       var overlay = document.querySelector('.overlay');
 
+      var loginBtn = document.querySelector('.login');
+
+      var signUpBtn = document.querySelector('.sign-up');
+
       function removeClassToModal() {
             modal.classList.remove('modal-active');
             modalSign.classList.remove('modal-active');
             overlay.classList.remove('overlay-active');
       };
 
-      function modalShow() {
+      function addClassToModal() {
+            modal.classList.add('modal-active');
+            overlay.classList.add('overlay-active');
+      };
 
+      function addClassToModalSign() {
+            modalSign.classList.add('modal-active');
+            overlay.classList.add('overlay-active');
+      };
+      
+
+      function modalShow() {
             var modal = document.querySelector('.modal__login');
 
             var modalSign = document.querySelector('.modal__sign-up');
@@ -30,47 +44,39 @@ function init () {
 
             var closeModalSign = document.querySelector('.close-modal-sign');
 
-
             loginBtn.addEventListener('click', function (event) {            
             event.preventDefault();
             addClassToModal();
             document.body.style.overflow = 'hidden ';
             });
-
             signUpBtn.addEventListener('click', function (event) {
                   event.preventDefault();
                   addClassToModalSign();
                   document.body.style.overflow = 'hidden ';
             });
-
             closeModal.addEventListener('click', function (event) {
                   event.preventDefault();
                   removeClassToModal();                  
                   document.body.style.overflow = 'auto';
             });
-
             closeModalSign.addEventListener('click', function (event) {
                   event.preventDefault();
                   removeClassToModal();                  
                   document.body.style.overflow = 'auto';
             });
-
             overlay.addEventListener('click', function (event) {
                   removeClassToModal();
                   removeClassToModalSign();
                   document.body.style.overflow = 'auto';
-            });
-            
+            });            
             function addClassToModal() {
                   modal.classList.add('modal-active');                  
                   overlay.classList.add('overlay-active');
             };
-
             function addClassToModalSign() {
                   modalSign.classList.add('modal-active');
                   overlay.classList.add('overlay-active');
             };
-
             function removeClassToModal() {
                   modal.classList.remove('modal-active');
                   modalSign.classList.remove('modal-active');
@@ -152,36 +158,261 @@ function init () {
 
       slider();
 
-      var formLogin = document.querySelector('.modal__login--form');
+      var formLogin = document.querySelector('.modal__login--form');    
 
       var formSign = document.querySelector('.modal__sign-up--form');
 
-      var err = document.querySelectorAll('.fa-exclamation-circle')
+      var err = document.querySelectorAll('.fa-exclamation-circle');
+
+      var modalLogin = document.querySelector('.modal__login--form-submit');
 
       formLogin.addEventListener('submit', function (event) {
 
-            event.preventDefault();
+            if (event.target.email.value !== '' &&
+                event.target.password.value !== '') {
 
-            var formLoginData = {
+                  event.preventDefault();
 
-                  email: event.target.email.value,
-                  password: event.target.password.value
+                  for (let i = 0; i < err.length; i++) {
 
-            };
+                        err[i].style.display = 'none';
+                  }                  
 
-            formLoginData = JSON.stringify(formLoginData);
+                  var formLoginData = {
 
-            var xhr = new XMLHttpRequest();
+                        email: event.target.email.value,
+                        password: event.target.password.value
 
-            xhr.open('POST', 'https://firstapp-3c009.firebaseio.com/students.json');
+                  };    
 
-            xhr.send(formLoginData)
+                  var xhr__users = new XMLHttpRequest();
 
-            event.target.email.value = '';
+                  xhr__users.open('GET', 'https://firstapp-3c009.firebaseio.com/students.json');
 
-            event.target.password.value = '';
+                  xhr__users.responseType = 'json';
+
+                  xhr__users.addEventListener('load', function () {
+
+                        // var data = JSON.parse(xhr.responseText);                 
+
+                        var data__users = xhr__users.response;
+
+                        for (var key in data__users) {
+
+                              var users = data__users[key];
+
+                              var a = document.createElement('a');
+
+                              a.textContent = `Email:${users.email}; Password: ${users.password}`;
+
+
+                              var xhr = new XMLHttpRequest();
+
+                              xhr.open('GET', 'https://firstapp-3c009.firebaseio.com/users.json');
+
+                              xhr.responseType = 'json';
+
+                              
+
+                              xhr.addEventListener('load', function () {
+
+                                    // var data = JSON.parse(xhr.responseText);                 
+
+                                    var data = xhr.response;
+
+                                    for (var key in data) {
+
+                                          var person = data[key];
+
+                                          var p = document.createElement('p');
+
+                                          p.textContent = `Email:${formLoginData.email}; Password: ${formLoginData.password}`;
+
+                                          if (person.email === formLoginData.email && person.password === formLoginData.password) {
+
+                                                var logAndSign = document.querySelector('.log-and-sign');
+
+                                                var p = document.createElement('p');
+
+                                                var userIcon = document.createElement('i');
+
+                                                userIcon.classList.add('fa');
+
+                                                userIcon.classList.add('fa-user-circle');
+
+                                                p.textContent = `${person.name} ${person.surname}`;                                                
+
+                                                p.classList.add('login');
+
+                                                logAndSign.removeChild(signUpBtn);
+
+                                                logAndSign.removeChild(loginBtn);
+
+                                                logAndSign.appendChild(userIcon);
+
+                                                logAndSign.appendChild(p);
+
+                                                logAndSign.classList.add('user-true');
+
+                                                var title = document.getElementsByTagName(title);                                                
+
+                                                break
+
+                                          } else {   
+                                                
+                                                // addClassToModalSign();
+                                                
+                                                for (let i = 0; i < err.length; i++) {
+
+                                                      err[i].style.display = 'inline-block';
+
+                                                }
+                                          }
+
+                                          // break
+                                    }
+
+                              });
+
+                              xhr.send();
+                        }
+
+                  });
+
+                  xhr__users.send();
+
+                  
+
+                  // formLoginData = JSON.stringify(formLoginData);
+
+                  // var xhr = new XMLHttpRequest();
+
+                  // xhr.open('POST', 'https://firstapp-3c009.firebaseio.com/students.json');
+
+                  // xhr.send(formLoginData);
+
+                  removeClassToModal();
+
+                  document.body.style.overflow = 'auto';
+
+                  event.target.email.value = '';
+
+                  event.target.password.value = '';
+
+            } else{
+
+                  event.preventDefault();
+
+                  for (let i = 0; i < err.length; i++) {
+
+                        err[i].style.display = 'inline-block';
+
+                  }
+            }
 
       });
+
+      // formLogin.addEventListener('submit', function (event) {
+
+      //       console.log(event.target.email.value);
+            
+      //       var xhr__users = new XMLHttpRequest();
+
+      //       xhr__users.open('GET', 'https://firstapp-3c009.firebaseio.com/students.json');
+
+      //       xhr__users.responseType = 'json';
+
+      //       xhr__users.addEventListener('load', function () {
+
+      //             // var data = JSON.parse(xhr.responseText);                 
+
+      //             var data__users = xhr__users.response;
+
+      //             for (var key in data__users) {
+
+      //                   var users = data__users[key];
+
+      //                   var a = document.createElement('a');
+
+      //                   a.textContent = `Email:${users.email}; Password: ${users.password}`;                        
+                        
+
+      //                   var xhr = new XMLHttpRequest();
+
+      //                   xhr.open('GET', 'https://firstapp-3c009.firebaseio.com/users.json');
+
+      //                   xhr.responseType = 'json';
+
+      //                   xhr.addEventListener('load', function () {
+
+      //                         // var data = JSON.parse(xhr.responseText);                 
+
+      //                         var data = xhr.response;
+
+      //                         for (var key in data) {
+
+      //                               var person = data[key];
+
+      //                               var p = document.createElement('p');                                   
+
+      //                               p.textContent = `Email:${event.target.email.value}; Password: ${event.target.password.value}`;
+
+      //                               if (users.email === event.target.email.value && users.password === event.target.password.value) {
+
+      //                                     var logAndSign = document.querySelector('.log-and-sign');
+
+      //                                     var p = document.createElement('p');
+
+      //                                     var userIcon = document.createElement('i');
+
+      //                                     userIcon.classList.add('fa');
+
+      //                                     userIcon.classList.add('fa-user-circle');
+
+      //                                     p.textContent = `${person.name} ${person.surname}`;
+
+      //                                     p.classList.add('login');                                    
+
+      //                                     logAndSign.removeChild(signUpBtn);
+
+      //                                     logAndSign.removeChild(loginBtn);
+
+      //                                     logAndSign.appendChild(userIcon);
+
+      //                                     logAndSign.appendChild(p);
+
+      //                                     logAndSign.classList.add('user-true');
+
+      //                                     break;
+      //                               } 
+
+      //                               else{
+                                          
+      //                                     event.preventDefault();
+
+      //                                     for (let i = 0; i < err.length; i++) {
+
+      //                                           err[i].style.display = 'inline-block';
+
+      //                                     }
+      //                               }
+      //                         }
+
+
+      //                   }); 
+                        
+      //                   xhr.send();
+                        
+
+      //             }
+
+                  
+
+      //       });
+
+      //       xhr__users.send();
+
+      // });
 
       formSign.addEventListener('submit', function (event) {
 
@@ -215,7 +446,33 @@ function init () {
                   xhr.send(formSignData); 
                   
                   removeClassToModal();
-                 
+            
+                  document.body.style.overflow = 'auto';
+
+                  var logAndSign = document.querySelector('.log-and-sign');                  
+
+                  var p = document.createElement('p');    
+                  
+                  var userIcon = document.createElement('i');
+
+                  userIcon.classList.add('fa');
+
+                  userIcon.classList.add('fa-user-circle');
+
+                  p.textContent = `${event.target.name.value} ${event.target.surname.value}`;  
+                  
+                  p.classList.add('login');                  
+
+                  logAndSign.removeChild(signUpBtn);
+                  
+                  logAndSign.removeChild(loginBtn);
+
+                  logAndSign.appendChild(userIcon);
+                  
+                  logAndSign.appendChild(p);
+
+                  logAndSign.classList.add('user-true');
+                             
                   event.target.email.value = '';
 
                   event.target.name.value = '';
@@ -232,47 +489,13 @@ function init () {
 
                         err[i].style.display = 'inline-block';  
 
-                  }
-
-                  
+                  }                  
             }
 
 
       });
 
-      var btnSign = document.querySelector('.modal__login--form-submit')
-
-      btnSign.addEventListener('click', function (e) {            
-
-            var xhr = new XMLHttpRequest();
-
-            xhr.open('GET', 'https://firstapp-3c009.firebaseio.com/users.json');
-
-            xhr.responseType = 'json';
-
-            xhr.addEventListener('load', function () {
-
-                  // var data = JSON.parse(xhr.responseText);                 
-
-                  var data = xhr.response;                  
-
-                  for (var key in data) {
-
-                        var person = data[key];
-
-                        var p = document.createElement('p');
-
-                        p.textContent = `Имя: ${person.name}; Фамилия: ${person.surname}; Email:${person.email}`;
-
-                        document.getElementsByTagName('body').appendChild(p);
-
-                  }
-
-            });
-
-            xhr.send();
-
-      });
+      
 
 
       
