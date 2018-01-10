@@ -166,337 +166,260 @@ function init () {
 
       var modalLogin = document.querySelector('.modal__login--form-submit');
 
-      formLogin.addEventListener('submit', function (event) {
+      function ajax() {   
 
-            if (event.target.email.value !== '' &&
-                event.target.password.value !== '') {
+            formLogin.addEventListener('submit', function (event) {
 
-                  event.preventDefault();
+                  if (event.target.email.value !== '' &&
+                  event.target.password.value !== '') {
 
-                  for (let i = 0; i < err.length; i++) {
+                        event.preventDefault();
 
-                        err[i].style.display = 'none';
-                  }                  
+                        for (let i = 0; i < err.length; i++) {
 
-                  var formLoginData = {
+                              err[i].style.display = 'none';
+                        }                  
 
-                        email: event.target.email.value,
-                        password: event.target.password.value
+                        var formLoginData = {
 
-                  };    
+                              email: event.target.email.value,
+                              password: event.target.password.value
 
-                  var xhr__users = new XMLHttpRequest();
+                        };    
 
-                  xhr__users.open('GET', 'https://firstapp-3c009.firebaseio.com/students.json');
+                        var xhr__users = new XMLHttpRequest();
 
-                  xhr__users.responseType = 'json';
+                        xhr__users.open('GET', 'https://firstapp-3c009.firebaseio.com/students.json');
 
-                  xhr__users.addEventListener('load', function () {
+                        xhr__users.responseType = 'json';
 
-                        // var data = JSON.parse(xhr.responseText);                 
+                        xhr__users.addEventListener('load', function () {
 
-                        var data__users = xhr__users.response;
+                              // var data = JSON.parse(xhr.responseText);                 
 
-                        for (var key in data__users) {
+                              var data__users = xhr__users.response;
 
-                              var users = data__users[key];
+                              for (var key in data__users) {
 
-                              var a = document.createElement('a');
+                                    var users = data__users[key];
 
-                              a.textContent = `Email:${users.email}; Password: ${users.password}`;
+                                    var a = document.createElement('a');
+
+                                    a.textContent = `Email:${users.email}; Password: ${users.password}`;
 
 
-                              var xhr = new XMLHttpRequest();
+                                    var xhr = new XMLHttpRequest();
 
-                              xhr.open('GET', 'https://firstapp-3c009.firebaseio.com/users.json');
+                                    xhr.open('GET', 'https://firstapp-3c009.firebaseio.com/users.json');
 
-                              xhr.responseType = 'json';
+                                    xhr.responseType = 'json';
 
-                              
+                                    
 
-                              xhr.addEventListener('load', function () {
+                                    xhr.addEventListener('load', function () {
 
-                                    // var data = JSON.parse(xhr.responseText);                 
+                                          // var data = JSON.parse(xhr.responseText);                 
 
-                                    var data = xhr.response;
+                                          var data = xhr.response;
 
-                                    for (var key in data) {
+                                          for (var key in data) {
 
-                                          var person = data[key];
-
-                                          var p = document.createElement('p');
-
-                                          p.textContent = `Email:${formLoginData.email}; Password: ${formLoginData.password}`;
-
-                                          if (person.email === formLoginData.email && person.password === formLoginData.password) {
-
-                                                var logAndSign = document.querySelector('.log-and-sign');
+                                                var person = data[key];
 
                                                 var p = document.createElement('p');
 
-                                                var userIcon = document.createElement('i');
+                                                p.textContent = `Email:${formLoginData.email}; Password: ${formLoginData.password}`;
 
-                                                userIcon.classList.add('fa');
+                                                if (person.email === formLoginData.email && person.password === formLoginData.password) {
 
-                                                userIcon.classList.add('fa-user-circle');
+                                                      var logAndSign = document.querySelector('.log-and-sign');
 
-                                                p.textContent = `${person.name} ${person.surname}`;                                                
+                                                      var p = document.createElement('p');
 
-                                                p.classList.add('login');
+                                                      var userIcon = document.createElement('i');
 
-                                                logAndSign.removeChild(signUpBtn);
+                                                      userIcon.classList.add('fa');
 
-                                                logAndSign.removeChild(loginBtn);
+                                                      userIcon.classList.add('fa-user-circle');
 
-                                                logAndSign.appendChild(userIcon);
+                                                      p.textContent = `${person.name} ${person.surname}`;                                                
 
-                                                logAndSign.appendChild(p);
+                                                      p.classList.add('login');
 
-                                                logAndSign.classList.add('user-true');
+                                                      logAndSign.removeChild(signUpBtn);
 
-                                                var title = document.getElementsByTagName(title);                                                
+                                                      logAndSign.removeChild(loginBtn);
 
-                                                break
+                                                      logAndSign.appendChild(userIcon);
 
-                                          } else {   
-                                                
-                                                // addClassToModalSign();
-                                                
-                                                for (let i = 0; i < err.length; i++) {
+                                                      logAndSign.appendChild(p);
 
-                                                      err[i].style.display = 'inline-block';
+                                                      logAndSign.classList.add('user-true');
 
+                                                      var title = document.getElementsByTagName(title);                                                
+
+                                                      break
+
+                                                } else {   
+                                                      
+                                                      for (let i = 0; i < err.length; i++) {
+
+                                                            err[i].style.display = 'inline-block';
+
+                                                      }
                                                 }
                                           }
 
-                                          // break
-                                    }
+                                    });
 
-                              });
+                                    xhr.send();
+                              }
 
-                              xhr.send();
+                        });
+
+                        xhr__users.send();
+                        
+
+                        removeClassToModal();
+
+                        document.body.style.overflow = 'auto';
+
+                        event.target.email.value = '';
+
+                        event.target.password.value = '';
+
+                  } else{
+
+                        event.preventDefault();
+
+                        for (let i = 0; i < err.length; i++) {
+
+                              err[i].style.display = 'inline-block';
+
                         }
-
-                  });
-
-                  xhr__users.send();
-
-                  
-
-                  // formLoginData = JSON.stringify(formLoginData);
-
-                  // var xhr = new XMLHttpRequest();
-
-                  // xhr.open('POST', 'https://firstapp-3c009.firebaseio.com/students.json');
-
-                  // xhr.send(formLoginData);
-
-                  removeClassToModal();
-
-                  document.body.style.overflow = 'auto';
-
-                  event.target.email.value = '';
-
-                  event.target.password.value = '';
-
-            } else{
-
-                  event.preventDefault();
-
-                  for (let i = 0; i < err.length; i++) {
-
-                        err[i].style.display = 'inline-block';
-
                   }
-            }
 
-      });
+            });
 
-      // formLogin.addEventListener('submit', function (event) {
-
-      //       console.log(event.target.email.value);
             
-      //       var xhr__users = new XMLHttpRequest();
+            formSign.addEventListener('submit', function (event) {
 
-      //       xhr__users.open('GET', 'https://firstapp-3c009.firebaseio.com/students.json');
+                  if (event.target.email.value !== '' &&
+                  event.target.name.value !== '' &&
+                  event.target.surname.value !== '' &&
+                  event.target.password.value !== '') {
 
-      //       xhr__users.responseType = 'json';
+                        for (let i = 0; i < err.length; i++) {
 
-      //       xhr__users.addEventListener('load', function () {
+                              err[i].style.display = 'none';
+                        }            
 
-      //             // var data = JSON.parse(xhr.responseText);                 
+                        event.preventDefault();
 
-      //             var data__users = xhr__users.response;
+                        var formSignData = {
 
-      //             for (var key in data__users) {
+                              email: event.target.email.value,
+                              password: event.target.password.value,
+                              name: event.target.name.value,
+                              surname: event.target.surname.value
 
-      //                   var users = data__users[key];
+                        };
 
-      //                   var a = document.createElement('a');
+                        formSignData = JSON.stringify(formSignData);
 
-      //                   a.textContent = `Email:${users.email}; Password: ${users.password}`;                        
+                        var xhr = new XMLHttpRequest();
+
+                        xhr.open('POST', 'https://firstapp-3c009.firebaseio.com/users.json');
+
+                        xhr.send(formSignData); 
                         
+                        removeClassToModal();
+                  
+                        document.body.style.overflow = 'auto';
 
-      //                   var xhr = new XMLHttpRequest();
+                        var logAndSign = document.querySelector('.log-and-sign');                  
 
-      //                   xhr.open('GET', 'https://firstapp-3c009.firebaseio.com/users.json');
-
-      //                   xhr.responseType = 'json';
-
-      //                   xhr.addEventListener('load', function () {
-
-      //                         // var data = JSON.parse(xhr.responseText);                 
-
-      //                         var data = xhr.response;
-
-      //                         for (var key in data) {
-
-      //                               var person = data[key];
-
-      //                               var p = document.createElement('p');                                   
-
-      //                               p.textContent = `Email:${event.target.email.value}; Password: ${event.target.password.value}`;
-
-      //                               if (users.email === event.target.email.value && users.password === event.target.password.value) {
-
-      //                                     var logAndSign = document.querySelector('.log-and-sign');
-
-      //                                     var p = document.createElement('p');
-
-      //                                     var userIcon = document.createElement('i');
-
-      //                                     userIcon.classList.add('fa');
-
-      //                                     userIcon.classList.add('fa-user-circle');
-
-      //                                     p.textContent = `${person.name} ${person.surname}`;
-
-      //                                     p.classList.add('login');                                    
-
-      //                                     logAndSign.removeChild(signUpBtn);
-
-      //                                     logAndSign.removeChild(loginBtn);
-
-      //                                     logAndSign.appendChild(userIcon);
-
-      //                                     logAndSign.appendChild(p);
-
-      //                                     logAndSign.classList.add('user-true');
-
-      //                                     break;
-      //                               } 
-
-      //                               else{
-                                          
-      //                                     event.preventDefault();
-
-      //                                     for (let i = 0; i < err.length; i++) {
-
-      //                                           err[i].style.display = 'inline-block';
-
-      //                                     }
-      //                               }
-      //                         }
-
-
-      //                   }); 
+                        var p = document.createElement('p');    
                         
-      //                   xhr.send();
+                        var userIcon = document.createElement('i');
+
+                        userIcon.classList.add('fa');
+
+                        userIcon.classList.add('fa-user-circle');
+
+                        p.textContent = `${event.target.name.value} ${event.target.surname.value}`;  
                         
+                        p.classList.add('login');                  
 
-      //             }
+                        logAndSign.removeChild(signUpBtn);
+                        
+                        logAndSign.removeChild(loginBtn);
 
-                  
+                        logAndSign.appendChild(userIcon);
+                        
+                        logAndSign.appendChild(p);
 
-      //       });
+                        logAndSign.classList.add('user-true');
+                              
+                        event.target.email.value = '';
 
-      //       xhr__users.send();
+                        event.target.name.value = '';
 
-      // });
+                        event.target.surname.value = '';
 
-      formSign.addEventListener('submit', function (event) {
+                        event.target.password.value = '';
 
-            if (event.target.email.value !== '' &&
-                event.target.name.value !== '' &&
-                event.target.surname.value !== '' &&
-                event.target.password.value !== '') {
+                  } else{
+                        
+                        event.preventDefault();                  
 
-                  for (let i = 0; i < err.length; i++) {
+                        for (let i = 0; i < err.length; i++) {
 
-                        err[i].style.display = 'none';
-                  }            
+                              err[i].style.display = 'inline-block';  
 
-                  event.preventDefault();
-
-                  var formSignData = {
-
-                        email: event.target.email.value,
-                        password: event.target.password.value,
-                        name: event.target.name.value,
-                        surname: event.target.surname.value
-
-                  };
-
-                  formSignData = JSON.stringify(formSignData);
-
-                  var xhr = new XMLHttpRequest();
-
-                  xhr.open('POST', 'https://firstapp-3c009.firebaseio.com/users.json');
-
-                  xhr.send(formSignData); 
-                  
-                  removeClassToModal();
-            
-                  document.body.style.overflow = 'auto';
-
-                  var logAndSign = document.querySelector('.log-and-sign');                  
-
-                  var p = document.createElement('p');    
-                  
-                  var userIcon = document.createElement('i');
-
-                  userIcon.classList.add('fa');
-
-                  userIcon.classList.add('fa-user-circle');
-
-                  p.textContent = `${event.target.name.value} ${event.target.surname.value}`;  
-                  
-                  p.classList.add('login');                  
-
-                  logAndSign.removeChild(signUpBtn);
-                  
-                  logAndSign.removeChild(loginBtn);
-
-                  logAndSign.appendChild(userIcon);
-                  
-                  logAndSign.appendChild(p);
-
-                  logAndSign.classList.add('user-true');
-                             
-                  event.target.email.value = '';
-
-                  event.target.name.value = '';
-
-                  event.target.surname.value = '';
-
-                  event.target.password.value = '';
-
-            } else{
-                  
-                  event.preventDefault();                  
-
-                  for (let i = 0; i < err.length; i++) {
-
-                        err[i].style.display = 'inline-block';  
-
-                  }                  
-            }
+                        }                  
+                  }
 
 
-      });
+            });
+
+      }
+
+      ajax();
 
       
+      function nav(control, menu, overlay, overlayActiveClass, menuActiveClass) {
+            var isOpen = false;
+            control.addEventListener('click', function (e) {
+                  isOpen = !isOpen;
+                  menu.classList.toggle(menuActiveClass);
+                  overlay.classList.toggle(overlayActiveClass);
+                  document.body.style.overflow = 'hidden';
+            });
 
+            window.addEventListener('keyup', function (event) {
+                  event.preventDefault();
+                  if (event.keyCode === 27) {
+                        isOpen = false;
+                        menu.classList.remove(menuActiveClass);
+                        overlay.classList.remove(overlayActiveClass);
+                  }
+            });
+
+            overlay.addEventListener('click', function (event) {
+                  isOpen = false;
+                  menu.classList.remove(menuActiveClass);
+                  overlay.classList.remove(overlayActiveClass);
+            });
+      }
+
+      var control = document.querySelector('.btn');
+      var menu = document.querySelector('.menu');
+      var overlay = document.querySelector('.overlay__menu');
+      console.log(overlay);
+
+
+      nav(control, menu, overlay, 'overlay--active', 'menu--active');
 
       
 
