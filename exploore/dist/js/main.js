@@ -423,6 +423,7 @@ function init () {
                   isOpen = false;
                   menu.classList.remove(menuActiveClass);
                   overlay__menu.classList.remove(overlayActiveClass);
+                  document.body.style.overflow = 'auto';
             });
       }
 
@@ -432,7 +433,7 @@ function init () {
       console.log(overlay);
 
 
-      nav(control, menu, overlay__menu, 'overlay--active', 'menu--active');
+      nav(control, menu, overlay__menu, 'overlay__menu--active', 'menu--active');
 
       
 
