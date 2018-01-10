@@ -27,6 +27,11 @@ function init () {
             modalSign.classList.add('modal-active');
             overlay.classList.add('overlay-active');
       };
+
+      function removeClassToModalSign() {
+            modalSign.classList.remove('modal-active');
+            overlay.classList.remove('overlay-active');
+      };
       
 
       function modalShow() {
@@ -124,15 +129,15 @@ function init () {
 
             function moveLeft() {  
 
-                  slide_left.style.opacity = '1';
+                  slide_left.style.display = 'block';
             
-                  slides[idx].style.display = 'none'; 
+                  slides[idx].style.opacity = '0'; 
 
-                  slides[++idx].style.display = 'flex';
+                  slides[++idx].style.opacity = '1';
                   
                   if (idx === slides.length - 1) {
 
-                        slide_right.style.opacity = '0';
+                        slide_right.style.display = 'none';
                         
                   }
             }
@@ -141,15 +146,15 @@ function init () {
 
             function moveRight() {
 
-                  slide_right.style.opacity = '1';
+                  slide_right.style.display = 'block';
                
-                  slides[idx].style.display = 'none';
+                  slides[idx].style.opacity = '0';
 
-                  slides[--idx].style.display = 'flex';
+                  slides[--idx].style.opacity = '1';                 
                   
                   if (idx === 0) {
 
-                        slide_left.style.opacity = '0';
+                        slide_left.style.display = 'none';
                         
                   }
             }
@@ -164,11 +169,17 @@ function init () {
 
       var err = document.querySelectorAll('.fa-exclamation-circle');
 
-      var modalLogin = document.querySelector('.modal__login--form-submit');
+      var modalLogin = document.querySelector('.modal__login--form-submit'); 
 
-      function ajax() {   
+
+            modalLogin.addEventListener('click', function () {
+                  console.log(overlay);
+                  overlay.classList.remove('overlay-active');
+            });
 
             formLogin.addEventListener('submit', function (event) {
+
+                  overlay.classList.remove('overlay-active');
 
                   if (event.target.email.value !== '' &&
                   event.target.password.value !== '') {
@@ -277,10 +288,15 @@ function init () {
 
                         });
 
-                        xhr__users.send();
-                        
+                        xhr__users.send();                        
 
                         removeClassToModal();
+
+                        removeClassToModalSign();
+
+                        overlay.classList.remove('overlay-active');
+
+                        console.log(overlay);
 
                         document.body.style.overflow = 'auto';
 
@@ -383,17 +399,14 @@ function init () {
 
             });
 
-      }
-
-      ajax();
 
       
-      function nav(control, menu, overlay, overlayActiveClass, menuActiveClass) {
+      function nav(control, menu, overlay__menu, overlayActiveClass, menuActiveClass) {
             var isOpen = false;
             control.addEventListener('click', function (e) {
                   isOpen = !isOpen;
                   menu.classList.toggle(menuActiveClass);
-                  overlay.classList.toggle(overlayActiveClass);
+                  overlay__menu.classList.toggle(overlayActiveClass);
                   document.body.style.overflow = 'hidden';
             });
 
@@ -402,24 +415,24 @@ function init () {
                   if (event.keyCode === 27) {
                         isOpen = false;
                         menu.classList.remove(menuActiveClass);
-                        overlay.classList.remove(overlayActiveClass);
+                        overlay__menu.classList.remove(overlayActiveClass);
                   }
             });
 
-            overlay.addEventListener('click', function (event) {
+            overlay__menu.addEventListener('click', function (event) {
                   isOpen = false;
                   menu.classList.remove(menuActiveClass);
-                  overlay.classList.remove(overlayActiveClass);
+                  overlay__menu.classList.remove(overlayActiveClass);
             });
       }
 
       var control = document.querySelector('.btn');
       var menu = document.querySelector('.menu');
-      var overlay = document.querySelector('.overlay__menu');
+      var overlay__menu = document.querySelector('.overlay__menu');
       console.log(overlay);
 
 
-      nav(control, menu, overlay, 'overlay--active', 'menu--active');
+      nav(control, menu, overlay__menu, 'overlay--active', 'menu--active');
 
       
 
