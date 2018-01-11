@@ -1,0 +1,204 @@
+@media screen and (max-width:1270px) {}
+@media screen and (max-width:1000px) {
+    .conteiner{
+        width: 760px;
+    }
+    .header {
+        margin: 0 20px 0 20px;
+    }
+        .nav__item{
+            margin: 0 0 0 20px;              
+        }   
+        .top-section__title{
+            margin-left: 20px;
+        }
+
+        .card__list {
+            padding: 0 20px 0 20px;
+        }
+            .card__item {
+                width: 200px;
+                height: 125px;
+            }
+                .card__img {
+                    width: 200px;
+                }
+
+                .card__title {
+                    font-size: 1.5rem;
+                }
+        .columns__flex {
+            padding: 0 20px 0 20px;
+        }
+
+    .columns__flex--footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+        .sign-up {
+            background: #b3b3b3;
+            padding: 0px 10px 10px 10px;
+            margin-top: 10px;
+            width: 320px;
+            text-align: center;
+        }
+
+        .service-times {
+            background: #b3b3b3;
+            padding: 0px 10px 10px 10px;
+            margin-top: 10px;
+            width: 320px;
+            text-align: center;
+        }
+
+        .contact {
+            background: #b3b3b3;
+            padding: 0px 10px 10px 10px;
+            margin: 10px 0 10px 0;
+            width: 320px;
+            text-align: center;
+        }
+        .development-information {
+            margin: 15px 0 35px 20px;
+        }
+
+        .modal__sign-up {
+            height: 300px;
+        }
+            .response-delete,.modal__sign-up--form-surname {
+                display: none;
+            }
+            
+               
+
+}
+
+@media screen and (max-width:765px) {
+    .conteiner {
+        width: 480px;        
+    }
+     .header {
+        width: 100%;
+        margin: 0;
+        padding: 10px 0;        
+        overflow-x: hidden;
+    }
+        .logo{
+            margin: 0 auto;
+        }
+        .nav__area{
+            display: none;
+        }
+        // .square{
+        //     display: none;
+        // }
+        .top-section__title{
+            margin: 150px 0 0 20px;
+        }
+
+        .slide__img{
+            height: 397px;
+        }
+
+        .card__list {
+            padding: 0 20px 0 20px;
+            flex-direction: column;
+            align-items: center;
+        }
+            .card__item {
+                width: 200px;
+                height: 125px;
+                margin-bottom: 15px;
+            }
+                .card__img {
+                    width: 200px;
+                }
+
+                .card__title {
+                    font-size: 1.5rem;
+                }
+        .columns__flex {
+            padding: 0 20px 0 20px;
+            flex-direction: column;
+            align-items: center;
+        }
+            .events {
+                width: 100%;
+            }
+            .description {
+                width: 100%;
+                padding-left: 0;
+            }
+
+    .columns__flex--footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+        .sign-up {
+            background: #b3b3b3;
+            padding: 0px 10px 10px 10px;
+            margin-top: 10px;
+            width: 320px;
+            text-align: center;
+        }
+
+        .service-times {
+            background: #b3b3b3;
+            padding: 0px 10px 10px 10px;
+            margin-top: 10px;
+            width: 320px;
+            text-align: center;
+        }
+
+        .contact {
+            background: #b3b3b3;
+            padding: 0px 10px 10px 10px;
+            margin: 10px 0 10px 0;
+            width: 320px;
+            text-align: center;
+        }
+        .development-information {
+            margin: 15px 0 35px 20px;
+        }
+
+        .modal__sign-up {
+            height: 300px;
+        }
+            .response-delete,.modal__sign-up--form-surname {
+                display: none;
+            }
+
+            .search__list {
+                right: 0px;
+            }
+
+             .modal__sign-up {
+                 width: 320px;
+             }
+   
+
+}
+
+@media only screen and (max-width: 480px) {    
+    .conteiner {
+        width: 320px;
+    }
+    
+        .top-section__title{
+            margin: 150px auto 0 auto;
+            width: 300px;
+            font-size: 1.5rem;
+        }
+
+        .card__list{
+            margin-top: 20px;
+        }
+
+            .modal__sign-up {
+                width: 300px;
+            }
+
+       
+}

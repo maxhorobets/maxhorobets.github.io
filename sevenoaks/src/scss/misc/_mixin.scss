@@ -1,0 +1,20 @@
+@mixin conteiner{
+    width: 1000px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+@mixin size ($font){
+    font-size: $font;
+    line-height: $font + 2px;
+}
+
+@mixin flexCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin proxiomaBold{
+    
+}

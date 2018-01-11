@@ -61,13 +61,14 @@ function init () {
             });
             closeModal.addEventListener('click', function (event) {
                   event.preventDefault();
-                  removeClassToModal();                  
+                  removeClassToModal();            
                   document.body.style.overflow = 'auto';
             });
             closeModalSign.addEventListener('click', function (event) {
                   event.preventDefault();
                   removeClassToModal();                  
                   document.body.style.overflow = 'auto';
+                  
             });
             overlay.addEventListener('click', function (event) {
                   removeClassToModal();
@@ -171,233 +172,225 @@ function init () {
 
       var modalLogin = document.querySelector('.modal__login--form-submit'); 
 
+      formLogin.addEventListener('submit', function (event) {
 
-            modalLogin.addEventListener('click', function () {
-                  console.log(overlay);
-                  overlay.classList.remove('overlay-active');
-            });
+            if (event.target.email.value !== '' &&
+            event.target.password.value !== '') {
 
-            formLogin.addEventListener('submit', function (event) {
+                  event.preventDefault();
 
-                  overlay.classList.remove('overlay-active');
+                  for (let i = 0; i < err.length; i++) {
 
-                  if (event.target.email.value !== '' &&
-                  event.target.password.value !== '') {
+                        err[i].style.display = 'none';
+                  }                  
 
-                        event.preventDefault();
+                  var formLoginData = {
 
-                        for (let i = 0; i < err.length; i++) {
+                        email: event.target.email.value,
+                        password: event.target.password.value
 
-                              err[i].style.display = 'none';
-                        }                  
+                  };    
 
-                        var formLoginData = {
+                  var xhr__users = new XMLHttpRequest();
 
-                              email: event.target.email.value,
-                              password: event.target.password.value
+                  xhr__users.open('GET', 'https://firstapp-3c009.firebaseio.com/students.json');
 
-                        };    
+                  xhr__users.responseType = 'json';
 
-                        var xhr__users = new XMLHttpRequest();
+                  xhr__users.addEventListener('load', function () {
 
-                        xhr__users.open('GET', 'https://firstapp-3c009.firebaseio.com/students.json');
+                        // var data = JSON.parse(xhr.responseText);                 
 
-                        xhr__users.responseType = 'json';
+                        var data__users = xhr__users.response;
 
-                        xhr__users.addEventListener('load', function () {
+                        for (var key in data__users) {
 
-                              // var data = JSON.parse(xhr.responseText);                 
+                              var users = data__users[key];
 
-                              var data__users = xhr__users.response;
+                              var a = document.createElement('a');
 
-                              for (var key in data__users) {
-
-                                    var users = data__users[key];
-
-                                    var a = document.createElement('a');
-
-                                    a.textContent = `Email:${users.email}; Password: ${users.password}`;
+                              a.textContent = `Email:${users.email}; Password: ${users.password}`;
 
 
-                                    var xhr = new XMLHttpRequest();
+                              var xhr = new XMLHttpRequest();
 
-                                    xhr.open('GET', 'https://firstapp-3c009.firebaseio.com/users.json');
+                              xhr.open('GET', 'https://firstapp-3c009.firebaseio.com/users.json');
 
-                                    xhr.responseType = 'json';
+                              xhr.responseType = 'json';
 
-                                    
+                              
 
-                                    xhr.addEventListener('load', function () {
+                              xhr.addEventListener('load', function () {
 
-                                          // var data = JSON.parse(xhr.responseText);                 
+                                    // var data = JSON.parse(xhr.responseText);                 
 
-                                          var data = xhr.response;
+                                    var data = xhr.response;
 
-                                          for (var key in data) {
+                                    for (var key in data) {
 
-                                                var person = data[key];
+                                          var person = data[key];
+
+                                          var p = document.createElement('p');
+
+                                          p.textContent = `Email:${formLoginData.email}; Password: ${formLoginData.password}`;
+
+                                          if (person.email === formLoginData.email && person.password === formLoginData.password) {
+
+                                                var logAndSign = document.querySelector('.log-and-sign');
 
                                                 var p = document.createElement('p');
 
-                                                p.textContent = `Email:${formLoginData.email}; Password: ${formLoginData.password}`;
+                                                var userIcon = document.createElement('i');
 
-                                                if (person.email === formLoginData.email && person.password === formLoginData.password) {
+                                                userIcon.classList.add('fa');
 
-                                                      var logAndSign = document.querySelector('.log-and-sign');
+                                                userIcon.classList.add('fa-user-circle');
 
-                                                      var p = document.createElement('p');
+                                                p.textContent = `${person.name} ${person.surname}`;                                                
 
-                                                      var userIcon = document.createElement('i');
+                                                p.classList.add('login');
 
-                                                      userIcon.classList.add('fa');
+                                                logAndSign.removeChild(signUpBtn);
 
-                                                      userIcon.classList.add('fa-user-circle');
+                                                logAndSign.removeChild(loginBtn);
 
-                                                      p.textContent = `${person.name} ${person.surname}`;                                                
+                                                logAndSign.appendChild(userIcon);
 
-                                                      p.classList.add('login');
+                                                logAndSign.appendChild(p);
 
-                                                      logAndSign.removeChild(signUpBtn);
+                                                logAndSign.classList.add('user-true');
 
-                                                      logAndSign.removeChild(loginBtn);
+                                                var title = document.getElementsByTagName(title);                                                
 
-                                                      logAndSign.appendChild(userIcon);
+                                                break
 
-                                                      logAndSign.appendChild(p);
+                                          } else {   
+                                                
+                                                for (let i = 0; i < err.length; i++) {
 
-                                                      logAndSign.classList.add('user-true');
+                                                      err[i].style.display = 'inline-block';
 
-                                                      var title = document.getElementsByTagName(title);                                                
-
-                                                      break
-
-                                                } else {   
-                                                      
-                                                      for (let i = 0; i < err.length; i++) {
-
-                                                            err[i].style.display = 'inline-block';
-
-                                                      }
                                                 }
                                           }
+                                    }
 
-                                    });
+                              });
 
-                                    xhr.send();
-                              }
-
-                        });
-
-                        xhr__users.send();                        
-
-                        removeClassToModal();
-
-                        removeClassToModalSign();
-
-                        overlay.classList.remove('overlay-active');
-
-                        console.log(overlay);
-
-                        document.body.style.overflow = 'auto';
-
-                        event.target.email.value = '';
-
-                        event.target.password.value = '';
-
-                  } else{
-
-                        event.preventDefault();
-
-                        for (let i = 0; i < err.length; i++) {
-
-                              err[i].style.display = 'inline-block';
-
+                              xhr.send();
                         }
-                  }
 
-            });
+                  });
+
+                  xhr__users.send();                        
+
+                  removeClassToModal();
+
+                  removeClassToModalSign();
+
+                  overlay.classList.remove('overlay-active');
+
+                  console.log(overlay);
+
+                  document.body.style.overflow = 'auto';
+
+                  event.target.email.value = '';
+
+                  event.target.password.value = '';
+
+            } else{
+
+                  event.preventDefault();
+
+                  for (let i = 0; i < err.length; i++) {
+
+                        err[i].style.opacity = '1';
+
+                  }
+            }
+
+      });
 
             
-            formSign.addEventListener('submit', function (event) {
+      formSign.addEventListener('submit', function (event) {
 
-                  if (event.target.email.value !== '' &&
-                  event.target.name.value !== '' &&
-                  event.target.surname.value !== '' &&
-                  event.target.password.value !== '') {
+            if (event.target.email.value !== '' &&
+            event.target.name.value !== '' &&
+            event.target.surname.value !== '' &&
+            event.target.password.value !== '') {
 
-                        for (let i = 0; i < err.length; i++) {
+                  for (let i = 0; i < err.length; i++) {
 
-                              err[i].style.display = 'none';
-                        }            
+                        err[i].style.display = 'none';
+                  }            
 
-                        event.preventDefault();
+                  event.preventDefault();
 
-                        var formSignData = {
+                  var formSignData = {
 
-                              email: event.target.email.value,
-                              password: event.target.password.value,
-                              name: event.target.name.value,
-                              surname: event.target.surname.value
+                        email: event.target.email.value,
+                        password: event.target.password.value,
+                        name: event.target.name.value,
+                        surname: event.target.surname.value
 
-                        };
+                  };
 
-                        formSignData = JSON.stringify(formSignData);
+                  formSignData = JSON.stringify(formSignData);
 
-                        var xhr = new XMLHttpRequest();
+                  var xhr = new XMLHttpRequest();
 
-                        xhr.open('POST', 'https://firstapp-3c009.firebaseio.com/users.json');
+                  xhr.open('POST', 'https://firstapp-3c009.firebaseio.com/users.json');
 
-                        xhr.send(formSignData); 
-                        
-                        removeClassToModal();
+                  xhr.send(formSignData); 
                   
-                        document.body.style.overflow = 'auto';
+                  removeClassToModal();
+            
+                  document.body.style.overflow = 'auto';
 
-                        var logAndSign = document.querySelector('.log-and-sign');                  
+                  var logAndSign = document.querySelector('.log-and-sign');                  
 
-                        var p = document.createElement('p');    
+                  var p = document.createElement('p');    
+                  
+                  var userIcon = document.createElement('i');
+
+                  userIcon.classList.add('fa');
+
+                  userIcon.classList.add('fa-user-circle');
+
+                  p.textContent = `${event.target.name.value} ${event.target.surname.value}`;  
+                  
+                  p.classList.add('login');                  
+
+                  logAndSign.removeChild(signUpBtn);
+                  
+                  logAndSign.removeChild(loginBtn);
+
+                  logAndSign.appendChild(userIcon);
+                  
+                  logAndSign.appendChild(p);
+
+                  logAndSign.classList.add('user-true');
                         
-                        var userIcon = document.createElement('i');
+                  event.target.email.value = '';
 
-                        userIcon.classList.add('fa');
+                  event.target.name.value = '';
 
-                        userIcon.classList.add('fa-user-circle');
+                  event.target.surname.value = '';
 
-                        p.textContent = `${event.target.name.value} ${event.target.surname.value}`;  
-                        
-                        p.classList.add('login');                  
+                  event.target.password.value = '';
 
-                        logAndSign.removeChild(signUpBtn);
-                        
-                        logAndSign.removeChild(loginBtn);
+            } else{
+                  
+                  event.preventDefault();                  
 
-                        logAndSign.appendChild(userIcon);
-                        
-                        logAndSign.appendChild(p);
+                  for (let i = 0; i < err.length; i++) {
 
-                        logAndSign.classList.add('user-true');
-                              
-                        event.target.email.value = '';
+                        err[i].style.display = 'inline-block';  
 
-                        event.target.name.value = '';
-
-                        event.target.surname.value = '';
-
-                        event.target.password.value = '';
-
-                  } else{
-                        
-                        event.preventDefault();                  
-
-                        for (let i = 0; i < err.length; i++) {
-
-                              err[i].style.display = 'inline-block';  
-
-                        }                  
-                  }
+                  }                  
+            }
 
 
-            });
+      });
 
 
       
@@ -430,19 +423,9 @@ function init () {
       var control = document.querySelector('.btn');
       var menu = document.querySelector('.menu');
       var overlay__menu = document.querySelector('.overlay__menu');
-      console.log(overlay);
 
 
       nav(control, menu, overlay__menu, 'overlay__menu--active', 'menu--active');
 
-      
-
     
-
-
-      // var slides = document.querySelectorAll('.customer__review');
-
-      // console.log(object);
-    
-
 };
