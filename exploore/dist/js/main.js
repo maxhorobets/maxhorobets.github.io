@@ -12,6 +12,8 @@ function init () {
 
       var signUpBtn = document.querySelector('.sign-up');
 
+      modal.classList.remove('modal-active');
+
       function removeClassToModal() {
             modal.classList.remove('modal-active');
             modalSign.classList.remove('modal-active');
@@ -46,7 +48,7 @@ function init () {
             var signUpBtn = document.querySelector('.sign-up');
 
             var closeModal = document.querySelector('.close-modal');
-
+            
             var closeModalSign = document.querySelector('.close-modal-sign');
 
             loginBtn.addEventListener('click', function (event) {            
@@ -60,6 +62,7 @@ function init () {
                   document.body.style.overflow = 'hidden ';
             });
             closeModal.addEventListener('click', function (event) {
+                  console.log('Hi!');
                   event.preventDefault();
                   removeClassToModal();            
                   document.body.style.overflow = 'auto';
