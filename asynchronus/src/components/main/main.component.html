@@ -1,0 +1,32 @@
+<main class="main-content">
+
+    <section class="container-first-section">
+
+       <WelcomeComponent></WelcomeComponent>  
+
+    </section>
+
+    <section class="container-second-section">
+
+        <section class="second-section container">
+
+            <ul class="cards-list">
+                <li class="cards-item" v-for="card in cards">
+                    <CardComponent
+                        :content="card"
+                    >                
+                    </CardComponent>
+                </li>
+            </ul>
+
+        </section>
+
+    </section>
+
+    <section class="container-third-secion">
+
+        <MustReadsComponent></MustReadsComponent>
+
+    </section>
+
+</main>

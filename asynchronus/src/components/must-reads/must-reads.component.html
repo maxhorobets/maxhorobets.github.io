@@ -1,0 +1,25 @@
+<section class="must-reads-section container">
+
+    <h2 class="must-reads-title">
+        Must-Reads
+    </h2>
+
+    <ul class="must-reads-list">
+
+        <li v-for="item in mustReadItems" class="must-reads-item">
+
+            <div class="look-like-a-card">
+
+                <img class="must-reads-item-image" :src="item.image" alt="Must reads card image">
+
+            </div>
+
+            <h3 class="must-reads-item-title">
+                {{ item.title }}
+            </h3>
+
+        </li>
+
+    </ul>
+
+</section>
