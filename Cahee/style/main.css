@@ -836,7 +836,6 @@ img {
 	.seven-section{
 		width: 100%;
 		margin: 0 auto;
-		height: 100%;
 		background: url('../img/contact.png') center center no-repeat;	
 		background-size: cover;
 	}
