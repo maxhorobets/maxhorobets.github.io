@@ -1,0 +1,248 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    user-select: none;
+}
+ 
+body {
+    max-width: 1000px;
+    margin: 0 auto; 
+}
+
+h1, h2, h3, h4 {
+    color: #333;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+main {
+    display: flex;
+    justify-content: space-between; 
+    min-height: 95vh; 
+}
+
+    /* PINK SECTION */
+
+    .pink-section {
+        background-color: #232222;
+        color: #ffffff;
+        padding: 12px;
+        margin-right: 30px;
+    }
+
+    .pink-section .my-photo {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%; 
+        object-fit: cover;
+        display: block;
+        margin: 0 auto 25px auto;    
+    }
+
+    .pink-section h3 {
+        color: #ffffff;
+        margin: 0 0 20px 0;
+    }
+
+    .pink-section h4 {
+        margin: 0;
+        font-style: italic;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.6)
+
+    }
+
+    .pink-section .social-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+        /* CONTACT SECTION */
+
+        .contact-section {
+            margin-bottom: 70px;    
+        }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;    
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px
+        }
+
+        .contact-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .not-padding-list {
+            padding: 0 0 0 18px;
+            margin: 20px 0 30px 0;  
+        }
+
+        .not-padding-list li {
+            margin-bottom: 5px;
+        }
+
+    /* MAIN SECTION */
+   
+        .job-expectations-section {
+            background-color: #23222233;
+            border-radius: 10px;
+            border: 1px solid #232222;
+            padding-left: 10px;
+        }
+
+        .job-expectations-section h3 span {
+            font-weight: 500;
+        }
+
+        .education-list li, 
+        .additional-info-list li,
+        .personal-info-list li {
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .education-list span, 
+        .additional-info-list span,
+        .personal-info-list span {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .personal-info-list p {
+            margin: 0;
+            font-weight: 400;
+        }
+
+        .personal-inform-list li {
+            font-weight: 400;
+        }
+
+        .my-works-section a {
+            display: block;
+            color: black;
+            line-height: 1.5;
+        }
+
+        .my-works-section a:hover {
+            color: #22A5A5;   
+        }
+
+    .footer {
+        height: 5vh;
+        padding: 15px 10px;
+        text-align: center;
+        font-style: italic;
+        font-weight: 500;
+        font-size: 15px;
+        background-color: #232222;
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+@media (max-width: 800px) {
+
+    a {
+        font-size: 14px;
+    }
+
+
+    main {
+        flex-direction: column;  
+    }
+
+    /* PINK SECTION */
+
+    .pink-section {
+        padding: 10px;
+        margin-right: 0;
+        height: initial;
+    }
+
+    .pink-section .my-photo {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 15px auto;    
+    }
+
+    .pink-section h3 {
+        margin: 0 0 15px 0;
+        font-size: 16px;
+    }
+
+    .pink-section h4 {
+        font-size: 15px;
+    }
+
+    .pink-section .social-icon {
+        width: 25px;
+        height: 25px;
+    }
+
+        /* CONTACT SECTION */
+
+        .contact-section {
+            margin-bottom: 30px;    
+        }
+
+        .not-padding-list {
+            margin: 15px 0;  
+        }
+
+        .not-padding-list li {
+            font-size: 14px;
+        }
+
+        /* MAIN SECTION */
+
+    .main-section {
+        padding: 10px;
+    }
+
+    .main-section h2 {
+        font-size: 16px;
+    }
+
+    .main-title {
+        font-size: 18px;
+        margin-top: 5px ;
+    }
+
+    .job-expectations-section h3 {
+        font-size: 14px;
+    }   
+
+    .education-list li, 
+    .additional-info-list li,
+    .personal-info-list li {
+        font-size: 14px;
+    }
+    
+    .education-list span, .additional-info-list span, .personal-info-list span {
+        font-size: 14px;
+    }
+    
+    .footer {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+}
+
+        @media (max-width: 400px) {
+            .my-works-section a {
+            font-size: 13px;
+            }
+}
