@@ -39,6 +39,7 @@ main {
         height: 150px;
         border-radius: 50%; 
         object-fit: cover;
+        object-position: top;
         display: block;
         margin: 0 auto 25px auto;    
     }
